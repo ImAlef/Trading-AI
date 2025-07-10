@@ -46,19 +46,26 @@ class AutomatedScanner:
         try:
             logger.info("🚀 Initializing Automated Scanner...")
             
-            # Load ML model
-            if not self.signal_detector.load_model():
-                logger.error("Failed to load ML model")
-                return False
-            
-            logger.info(f"✅ ML model loaded: {self.signal_detector.ml_model.model_info.get('version', 'unknown')}")
+            # Try to load ML model
+            try:
+                if self.signal_detector.load_model():
+                    logger.info(f"✅ ML model loaded: {self.signal_detector.ml_model.model_info.get('version', 'unknown')}")
+                else:
+                    logger.warning("⚠️  ML model not found - running in basic mode")
+                    logger.info("💡 Run test_ml_model.py locally to train the model first")
+            except Exception as e:
+                logger.warning(f"⚠️  ML model loading failed: {str(e)} - continuing in basic mode")
             
             # Validate email configuration
-            if not self.email_sender.validate_config():
-                logger.warning("Email configuration invalid - notifications disabled")
+            try:
+                if not self.email_sender.validate_config():
+                    logger.warning("Email configuration invalid - notifications disabled")
+                    self.email_sender = None
+                else:
+                    logger.info("✅ Email notifications enabled")
+            except Exception as e:
+                logger.warning(f"Email setup failed: {str(e)}")
                 self.email_sender = None
-            else:
-                logger.info("✅ Email notifications enabled")
             
             logger.info("🎯 Scanner initialized successfully")
             return True
