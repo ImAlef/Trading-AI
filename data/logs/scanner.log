@@ -1,0 +1,125 @@
+2025-07-09 14:45:37,318 - INFO - Model loaded successfully: v20250709_143510
+2025-07-09 14:45:37,318 - INFO - Features: 66
+2025-07-09 14:45:37,318 - INFO - Model loaded successfully: v20250709_143510
+2025-07-09 14:45:57,778 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-09 14:45:57,779 - INFO - ALERT: Crypto Signal Bot started successfully and is monitoring the markets.
+2025-07-09 15:00:57,881 - INFO - Scanning 10 markets for signals...
+2025-07-09 15:00:57,881 - INFO - Analyzing BTCUSDT on 1h timeframe...
+2025-07-09 15:00:57,881 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:00:58,927 - INFO - Successfully fetched 150 candles for BTCUSDT
+2025-07-09 15:00:58,927 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:00:58,936 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:00:58,943 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:00:58,947 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:00:58,951 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:00:58,953 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:00:58,953 - INFO - Created 71 features
+2025-07-09 15:00:58,965 - INFO - BTCUSDT: Prediction=0, Confidence=0.001
+2025-07-09 15:00:59,065 - INFO - Analyzing ETHUSDT on 1h timeframe...
+2025-07-09 15:00:59,065 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:00:59,596 - INFO - Successfully fetched 150 candles for ETHUSDT
+2025-07-09 15:00:59,596 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:00:59,596 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:00:59,611 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:00:59,611 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:00:59,617 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:00:59,617 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:00:59,617 - INFO - Created 71 features
+2025-07-09 15:00:59,632 - INFO - ETHUSDT: Prediction=0, Confidence=0.004
+2025-07-09 15:00:59,748 - INFO - Analyzing BNBUSDT on 1h timeframe...
+2025-07-09 15:00:59,748 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:00,150 - INFO - Successfully fetched 150 candles for BNBUSDT
+2025-07-09 15:01:00,150 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:00,158 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:00,164 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:00,167 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:00,171 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:00,172 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:00,173 - INFO - Created 71 features
+2025-07-09 15:01:00,183 - INFO - BNBUSDT: Prediction=0, Confidence=0.039
+2025-07-09 15:01:00,290 - INFO - Analyzing ADAUSDT on 1h timeframe...
+2025-07-09 15:01:00,290 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:00,697 - INFO - Successfully fetched 150 candles for ADAUSDT
+2025-07-09 15:01:00,697 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:00,697 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:00,711 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:00,711 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:00,711 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:00,711 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:00,711 - INFO - Created 71 features
+2025-07-09 15:01:00,733 - INFO - ADAUSDT: Prediction=0, Confidence=0.044
+2025-07-09 15:01:00,844 - INFO - Analyzing SOLUSDT on 1h timeframe...
+2025-07-09 15:01:00,844 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:01,221 - INFO - Successfully fetched 150 candles for SOLUSDT
+2025-07-09 15:01:01,221 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:01,221 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:01,236 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:01,236 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:01,236 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:01,236 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:01,236 - INFO - Created 71 features
+2025-07-09 15:01:01,258 - INFO - SOLUSDT: Prediction=0, Confidence=0.012
+2025-07-09 15:01:01,372 - INFO - Analyzing DOTUSDT on 1h timeframe...
+2025-07-09 15:01:01,372 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:01,741 - INFO - Successfully fetched 150 candles for DOTUSDT
+2025-07-09 15:01:01,741 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:01,741 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:01,753 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:01,753 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:01,753 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:01,768 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:01,768 - INFO - Created 71 features
+2025-07-09 15:01:01,779 - INFO - DOTUSDT: Prediction=0, Confidence=0.007
+2025-07-09 15:01:01,890 - INFO - Analyzing LINKUSDT on 1h timeframe...
+2025-07-09 15:01:01,890 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:02,286 - INFO - Successfully fetched 150 candles for LINKUSDT
+2025-07-09 15:01:02,286 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:02,289 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:02,289 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:02,304 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:02,306 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:02,306 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:02,311 - INFO - Created 71 features
+2025-07-09 15:01:02,321 - INFO - LINKUSDT: Prediction=0, Confidence=0.016
+2025-07-09 15:01:02,426 - INFO - Analyzing MATICUSDT on 1h timeframe...
+2025-07-09 15:01:02,426 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:02,813 - INFO - Successfully fetched 150 candles for MATICUSDT
+2025-07-09 15:01:02,813 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:02,813 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:02,826 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:02,826 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:02,826 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:02,826 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:02,826 - INFO - Created 71 features
+2025-07-09 15:01:02,846 - INFO - MATICUSDT: Prediction=0, Confidence=0.158
+2025-07-09 15:01:02,962 - INFO - Analyzing LTCUSDT on 1h timeframe...
+2025-07-09 15:01:02,962 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:03,359 - INFO - Successfully fetched 150 candles for LTCUSDT
+2025-07-09 15:01:03,359 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:03,367 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:03,374 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:03,374 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:03,374 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:03,374 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:03,374 - INFO - Created 71 features
+2025-07-09 15:01:03,397 - INFO - LTCUSDT: Prediction=0, Confidence=0.015
+2025-07-09 15:01:03,510 - INFO - Analyzing TRXUSDT on 1h timeframe...
+2025-07-09 15:01:03,510 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-09 15:01:03,919 - INFO - Successfully fetched 150 candles for TRXUSDT
+2025-07-09 15:01:03,919 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-09 15:01:03,925 - INFO - Successfully calculated technical indicators for 150 rows
+2025-07-09 15:01:03,925 - INFO - Successfully calculated price features for 150 rows
+2025-07-09 15:01:03,925 - INFO - Successfully calculated trend features for 150 rows
+2025-07-09 15:01:03,940 - INFO - Successfully calculated pattern features for 150 rows
+2025-07-09 15:01:03,940 - INFO - Feature engineering for prediction completed: 150 -> 125 rows
+2025-07-09 15:01:03,940 - INFO - Created 71 features
+2025-07-09 15:01:03,949 - INFO - TRXUSDT: Prediction=0, Confidence=0.030
+2025-07-09 15:01:04,061 - INFO - Market scan completed: 0 new signals found
+2025-07-09 15:01:04,062 - INFO -    Scan #1
+2025-07-09 15:01:04,062 - INFO -    Signals found: 0
+2025-07-09 15:01:04,062 - INFO -    Active signals: 0
+2025-07-09 15:01:04,062 - INFO -    Scan time: 6.18s
+2025-07-09 15:01:04,062 - INFO -    Uptime: 0:15:26.781441
+2025-07-09 15:01:04,065 - INFO -    Daily signals: 0
+2025-07-09 15:03:16,541 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-09 15:03:16,541 - INFO - ALERT: Crypto Signal Bot stopped by user.
