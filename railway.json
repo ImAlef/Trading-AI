@@ -1,0 +1,8 @@
+{
+    "build": {
+      "builder": "NIXPACKS"
+    },
+    "deploy": {
+      "startCommand": "py -3.9 main.py"
+    }
+  }
