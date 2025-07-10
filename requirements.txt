@@ -1,37 +1,13 @@
-# FastAPI Backend
-fastapi==0.104.1
-uvicorn==0.24.0
-sqlalchemy==2.0.23
-alembic==1.12.1
-python-multipart==0.0.6
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-python-dotenv==1.0.0
-
-# Data Processing - Fixed versions
-pandas>=1.5.0,<3.0.0
-numpy>=1.21.0,<2.0.0
 requests==2.31.0
+schedule==1.2.0
+python-dotenv==1.0.0
 websocket-client==1.6.4
 ccxt==4.1.30
 aiohttp==3.9.0
-
-# Machine Learning
+pandas>=1.5.0
+numpy>=1.21.0
 scikit-learn==1.3.2
-joblib==1.3.2
-ta==0.10.2
-
-# Technical Analysis - Remove problematic TA-Lib
-# TA-Lib==0.4.28  # Removed - causes build issues
-# mplfinance==0.12.10a0  # Removed - alpha version
-
-# Email & Notifications
 email-validator==2.1.0
-
-# WebSocket
-websockets==12.0
-python-socketio==5.10.0
-
-# Utilities
-schedule==1.2.0
 APScheduler==3.10.4
+ta==0.10.2
+joblib==1.3.2
