@@ -159,7 +159,7 @@
 2025-07-12 12:27:53,736 - INFO - Features: 66
 2025-07-12 12:27:53,736 - INFO - Model loaded successfully: v20250710_135838
 2025-07-12 12:27:53,736 - INFO - 🚀 OPTIMIZED Live Learning System initialized
-2025-07-12 12:27:53,736 - INFO -    Initial threshold: 0.450
+2025-07-12 12:27:53,736 - INFO -    Initial threshold: 0.550
 2025-07-12 12:27:53,737 - INFO -    Learning sensitivity: 0.03
 2025-07-12 12:27:53,737 - INFO - 🧠 Live learning system initialized!
 2025-07-12 12:27:53,737 - INFO - ML model loaded: v20250710_135838
@@ -175,7 +175,7 @@
 2025-07-12 12:27:53,737 - INFO - Starting continuous scanning mode with Live Learning...
 2025-07-12 12:27:53,737 - INFO - Scan interval: 10.0 minutes
 2025-07-12 12:27:59,059 - INFO - Email sent successfully to arianakbari043@gmail.com
-2025-07-12 12:27:59,061 - INFO - ALERT: Crypto Signal Bot with Live Learning started successfully and is monitoring the markets. Live Learning System is active with adaptive threshold: 0.450
+2025-07-12 12:27:59,061 - INFO - ALERT: Crypto Signal Bot with Live Learning started successfully and is monitoring the markets. Live Learning System is active with adaptive threshold: 0.550
 2025-07-12 12:30:58,940 - INFO - Scanning stopped by user
 2025-07-12 12:31:03,944 - INFO - 🛑 Live learning monitoring stopped
 2025-07-12 12:31:03,944 - INFO - Live learning monitoring stopped
@@ -189,7 +189,7 @@
 2025-07-12 12:32:09,264 - INFO - Features: 66
 2025-07-12 12:32:09,264 - INFO - Model loaded successfully: v20250710_135838
 2025-07-12 12:32:09,265 - INFO - 🚀 OPTIMIZED Live Learning System initialized
-2025-07-12 12:32:09,265 - INFO -    Initial threshold: 0.450
+2025-07-12 12:32:09,265 - INFO -    Initial threshold: 0.550
 2025-07-12 12:32:09,265 - INFO -    Learning sensitivity: 0.03
 2025-07-12 12:32:09,265 - INFO - 🧠 Live learning system initialized!
 2025-07-12 12:32:09,265 - INFO - ✅ ML model ready: v20250710_135838
@@ -206,7 +206,7 @@
 2025-07-12 12:32:09,266 - INFO - 📅 Scan interval: 10.0 minutes
 2025-07-12 12:32:09,266 - INFO - 📅 Scheduling weekly model retraining...
 2025-07-12 12:32:33,586 - INFO - Email sent successfully to arianakbari043@gmail.com
-2025-07-12 12:32:33,587 - INFO - ALERT: Crypto Signal Bot with Auto-Training started successfully (Adaptive threshold: 0.450)
+2025-07-12 12:32:33,587 - INFO - ALERT: Crypto Signal Bot with Auto-Training started successfully (Adaptive threshold: 0.550)
 2025-07-12 12:33:42,772 - INFO - 👋 Scanning stopped by user
 2025-07-12 12:33:47,785 - INFO - 🛑 Live learning monitoring stopped
 2025-07-12 12:33:47,785 - INFO - 🛑 Live learning monitoring stopped

@@ -30,18 +30,18 @@ class Config:
     TIMEFRAMES = ["15m", "30m", "1h", "4h"]
     PRIMARY_TIMEFRAME = "1h"
     
-    # 🚀 OPTIMIZED Model Configuration (از بک‌تست)
-    CONFIDENCE_THRESHOLD = 0.55  # کم کردیم از 0.55 به 0.45
+    # 🔥 FIXED: Back to 55% threshold
+    CONFIDENCE_THRESHOLD = 0.55  # برگشت به 55%
     MODEL_RETRAIN_HOURS = 24 * 7  # Weekly retrain
     LOOKBACK_PERIODS = 100
     
-    # 🚀 OPTIMIZED Signal Configuration (از بک‌تست)
-    MIN_PROFIT_TARGET = 0.015    # کم کردیم از 0.02 به 0.015
-    MAX_STOP_LOSS = 0.012        # کم کردیم از 0.015 به 0.012
-    SIGNAL_EXPIRY_HOURS = 18     # کم کردیم از 999 به 18
+    # 🔥 FIXED: Better risk/reward ratios
+    MIN_PROFIT_TARGET = 0.025    # 2.5% minimum profit (بالاتر از 1.5%)
+    MAX_STOP_LOSS = 0.015        # 1.5% maximum loss
+    SIGNAL_EXPIRY_HOURS = 24     # 24 hours expiry
     
     # System Configuration
-    DATA_COLLECTION_INTERVAL = 600  # 10 دقیقه (کم کردیم از 15)
+    DATA_COLLECTION_INTERVAL = 900  # 15 minutes (back to normal)
     MAX_CONCURRENT_PAIRS = 15
     LOG_LEVEL = "INFO"
     
@@ -75,67 +75,105 @@ class Config:
     BACKTEST_DAYS = 180
     TRAIN_TEST_SPLIT = 0.8
     
-    # 🚀 NEW: Optimized Live Learning Settings
+    # 🔥 FIXED: Live Learning Settings
     LIVE_LEARNING = {
-        "initial_threshold": 0.45,
-        "min_threshold": 0.25,
-        "max_threshold": 0.70,
-        "adaptation_sensitivity": 0.03,  # هر بار چقدر تغییر کنه
-        "min_signals_for_adaptation": 5,
-        "learning_window": 20  # آخرین 20 سیگنال رو نگاه کن
+        "initial_threshold": 0.55,  # شروع از 55%
+        "min_threshold": 0.45,      # حداقل 45%
+        "max_threshold": 0.75,      # حداکثر 75%
+        "adaptation_sensitivity": 0.02,
+        "min_signals_for_adaptation": 8,
+        "learning_window": 15
     }
     
-    # 🚀 NEW: Optimized Risk Management
+    # 🔥 FIXED: Conservative Risk Management
     RISK_MANAGEMENT = {
-        "position_size_pct": 0.30,  # 30% از سرمایه در هر معامله
-        "max_concurrent_trades": 5,
-        "max_daily_trades": 15,
-        "max_drawdown_limit": 0.25,  # 25% max drawdown
-        "emergency_stop_loss": 0.20  # اگر 20% ضرر کردی همه رو ببند
+        "position_size_pct": 0.25,  # 25% (کمتر از 30%)
+        "max_concurrent_trades": 3,  # کمتر trades همزمان
+        "max_daily_trades": 8,       # کمتر trades روزانه
+        "max_drawdown_limit": 0.20,
+        "emergency_stop_loss": 0.15
     }
     
-    # 🚀 NEW: Optimized Signal Validation
+    # 🔥 FIXED: Stricter Signal Validation
     SIGNAL_VALIDATION = {
-        "min_risk_reward": 1.2,  # کم کردیم از 1.5
-        "max_rsi_overbought": 90,  # بالا بردیم از 85
-        "min_volume_ratio": 0.6,   # کم کردیم از 0.8
-        "require_multiple_confirmations": False
+        "min_risk_reward": 1.8,     # بالاتر از 1.2
+        "max_rsi_overbought": 80,   # کمتر از 90
+        "min_volume_ratio": 0.8,    # بالاتر از 0.6
+        "require_multiple_confirmations": True  # تایید چندگانه
     }
     
-    # 🚀 NEW: Leverage Settings (از بک‌تست)
-    LEVERAGE_SETTINGS = {
-        "BTCUSDT": {"max": 15.0, "confidence_multiplier": 1.2},
-        "ETHUSDT": {"max": 12.0, "confidence_multiplier": 1.1},
-        "BNBUSDT": {"max": 10.0, "confidence_multiplier": 1.0},
-        "ADAUSDT": {"max": 8.0, "confidence_multiplier": 0.9},
-        "SOLUSDT": {"max": 8.0, "confidence_multiplier": 0.9},
-        "DOTUSDT": {"max": 8.0, "confidence_multiplier": 0.9},
-        "LINKUSDT": {"max": 8.0, "confidence_multiplier": 0.9},
-        "MATICUSDT": {"max": 6.0, "confidence_multiplier": 0.8},
-        "LTCUSDT": {"max": 10.0, "confidence_multiplier": 1.0},
-        "TRXUSDT": {"max": 6.0, "confidence_multiplier": 0.8},
-        "XRPUSDT": {"max": 8.0, "confidence_multiplier": 0.9},
-        "default": {"max": 5.0, "confidence_multiplier": 0.8}
+    # 🔥 NEW: Price Display Settings
+    PRICE_DISPLAY = {
+        "decimal_places": {
+            # تعداد اعشار برای نمایش قیمت بر اساس قیمت
+            "high_price": 2,      # > $100: 2 decimal
+            "medium_price": 3,    # $1-100: 3 decimal  
+            "low_price": 4,       # $0.1-1: 4 decimal
+            "micro_price": 5      # < $0.1: 5 decimal
+        },
+        "minimum_difference_pct": 0.8  # حداقل 0.8% فاصله بین entry/stop
     }
     
     @classmethod
-    def get_optimized_leverage(cls, symbol: str, confidence: float) -> float:
-        """محاسبه leverage بهینه بر اساس symbol و confidence"""
+    def get_price_decimals(cls, price: float) -> int:
+        """تعداد اعشار مناسب برای نمایش قیمت"""
+        if price >= 100:
+            return cls.PRICE_DISPLAY["decimal_places"]["high_price"]
+        elif price >= 1:
+            return cls.PRICE_DISPLAY["decimal_places"]["medium_price"]
+        elif price >= 0.1:
+            return cls.PRICE_DISPLAY["decimal_places"]["low_price"]
+        else:
+            return cls.PRICE_DISPLAY["decimal_places"]["micro_price"]
+    
+    @classmethod
+    def format_price(cls, price: float) -> str:
+        """فرمت کردن قیمت با تعداد اعشار مناسب"""
+        decimals = cls.get_price_decimals(price)
+        return f"${price:.{decimals}f}"
+    
+    @classmethod
+    def validate_price_differences(cls, entry: float, target: float, stop: float) -> bool:
+        """بررسی اینکه فاصله قیمت‌ها کافی باشه"""
+        entry_stop_diff = abs(entry - stop) / entry
+        entry_target_diff = abs(target - entry) / entry
+        
+        min_diff = cls.PRICE_DISPLAY["minimum_difference_pct"] / 100
+        
+        return (entry_stop_diff >= min_diff and entry_target_diff >= min_diff)
+    
+    # Leverage Settings (محافظه‌کارانه‌تر)
+    LEVERAGE_SETTINGS = {
+        "BTCUSDT": {"max": 8.0, "confidence_multiplier": 1.0},
+        "ETHUSDT": {"max": 6.0, "confidence_multiplier": 0.9},
+        "BNBUSDT": {"max": 5.0, "confidence_multiplier": 0.8},
+        "ADAUSDT": {"max": 4.0, "confidence_multiplier": 0.7},
+        "SOLUSDT": {"max": 4.0, "confidence_multiplier": 0.7},
+        "DOTUSDT": {"max": 4.0, "confidence_multiplier": 0.7},
+        "LINKUSDT": {"max": 4.0, "confidence_multiplier": 0.7},
+        "MATICUSDT": {"max": 3.0, "confidence_multiplier": 0.6},
+        "LTCUSDT": {"max": 5.0, "confidence_multiplier": 0.8},
+        "TRXUSDT": {"max": 3.0, "confidence_multiplier": 0.6},
+        "XRPUSDT": {"max": 4.0, "confidence_multiplier": 0.7},
+        "default": {"max": 3.0, "confidence_multiplier": 0.6}
+    }
+    
+    @classmethod
+    def get_conservative_leverage(cls, symbol: str, confidence: float) -> float:
+        """محاسبه leverage محافظه‌کارانه"""
         settings = cls.LEVERAGE_SETTINGS.get(symbol, cls.LEVERAGE_SETTINGS["default"])
         
-        # محاسبه leverage بر اساس confidence
-        if confidence >= 0.9:
-            base_leverage = 15.0
-        elif confidence >= 0.8:
-            base_leverage = 10.0
-        elif confidence >= 0.7:
+        # محاسبه leverage بر اساس confidence (محافظه‌کارانه‌تر)
+        if confidence >= 0.85:
             base_leverage = 6.0
-        elif confidence >= 0.6:
+        elif confidence >= 0.75:
             base_leverage = 4.0
-        elif confidence >= 0.5:
-            base_leverage = 2.5
+        elif confidence >= 0.65:
+            base_leverage = 3.0
+        elif confidence >= 0.55:
+            base_leverage = 2.0
         else:
-            base_leverage = 1.5
+            base_leverage = 1.0
         
         # اعمال ضریب symbol
         adjusted_leverage = base_leverage * settings["confidence_multiplier"]
@@ -173,18 +211,3 @@ class ProductionConfig(Config):
 
 # Choose config based on environment
 config = DevelopmentConfig() if os.getenv("ENVIRONMENT") == "development" else ProductionConfig()
-
-# 🚀 تابع کمکی برای گرفتن تنظیمات optimized
-def get_optimized_settings():
-    """گرفتن تمام تنظیمات بهینه‌شده"""
-    return {
-        "confidence_threshold": config.CONFIDENCE_THRESHOLD,
-        "position_size": config.RISK_MANAGEMENT["position_size_pct"],
-        "min_profit": config.MIN_PROFIT_TARGET,
-        "max_loss": config.MAX_STOP_LOSS,
-        "scan_interval_minutes": config.DATA_COLLECTION_INTERVAL / 60,
-        "signal_expiry_hours": config.SIGNAL_EXPIRY_HOURS,
-        "live_learning_enabled": True,
-        "optimized_leverage": True,
-        "aggressive_targets": True
-    }

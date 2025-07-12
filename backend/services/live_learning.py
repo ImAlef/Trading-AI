@@ -62,15 +62,15 @@ class LiveLearningSystem:
         self.learning_data = []
         self.performance_history = []
         
-        # 🚀 OPTIMIZED Adaptive thresholds (از بک‌تست)
-        self.dynamic_threshold = 0.45  # شروع پایین‌تر
-        self.min_threshold = 0.25      # حداقل کمتر
-        self.max_threshold = 0.70      # حداکثر کمتر
+        # 🔥 FIXED: Back to 55% threshold
+        self.dynamic_threshold = 0.55  # برگشت به 55%
+        self.min_threshold = 0.45      # حداقل 45%
+        self.max_threshold = 0.75      # حداکثر 75%
         
-        # 🚀 OPTIMIZED Learning settings (تندتر یاد بگیره)
-        self.retrain_after_signals = 15  # کمتر از 30
-        self.evaluation_window = 12      # کمتر از 24
-        self.adaptation_sensitivity = 0.03  # بیشتر تغییر کنه
+        # Learning settings (محافظه‌کارانه‌تر)
+        self.retrain_after_signals = 20  # بیشتر صبر کن
+        self.evaluation_window = 18      # بیشتر وقت بده
+        self.adaptation_sensitivity = 0.02  # کمتر تغییر کن
         
         # Create directories
         os.makedirs('data/live_learning', exist_ok=True)
@@ -83,9 +83,9 @@ class LiveLearningSystem:
         self.monitor_thread = threading.Thread(target=self._monitor_signals, daemon=True)
         self.monitor_thread.start()
         
-        logger.info("🚀 OPTIMIZED Live Learning System initialized")
-        logger.info(f"   Initial threshold: {self.dynamic_threshold:.3f}")
-        logger.info(f"   Learning sensitivity: {self.adaptation_sensitivity}")
+        logger.info("🎯 Conservative Live Learning System initialized")
+        logger.info(f"   Threshold: {self.dynamic_threshold:.3f} (55% minimum)")
+        logger.info(f"   Adaptation: Conservative mode")
     
     def register_signal(self, signal, features: pd.DataFrame) -> str:
         """ثبت سیگنال جدید برای tracking"""
@@ -295,7 +295,7 @@ class LiveLearningSystem:
             old_threshold = self.dynamic_threshold
             
             # 🚀 منطق تطبیق بهینه‌شده (حساس‌تر)
-            if avg_win_rate < 0.45:  # کاهش از 0.5
+            if avg_win_rate < 0.55:  # کاهش از 0.5
                 # آستانه رو بالا ببر (محافظه‌کارتر باش)
                 self.dynamic_threshold = min(self.max_threshold, self.dynamic_threshold + self.adaptation_sensitivity)
                 change_reason = "low_win_rate"

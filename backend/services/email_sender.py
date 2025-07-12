@@ -137,11 +137,26 @@ class EmailSender:
     
     def _create_signal_email_body(self, signal_data: Dict) -> str:
         """
-        Create HTML email body for trading signal
+        Create HTML email body for trading signal با قیمت‌های بهتر
         """
-        # Calculate profit/loss percentages
-        profit_pct = ((signal_data['target_price'] - signal_data['entry_price']) / signal_data['entry_price']) * 100
-        loss_pct = ((signal_data['entry_price'] - signal_data['stop_loss']) / signal_data['entry_price']) * 100
+        from config import config
+        
+        # Get prices with proper decimal places
+        entry_price = signal_data['entry_price']
+        target_price = signal_data['target_price']
+        stop_loss = signal_data['stop_loss']
+        
+        # Format prices with appropriate decimals
+        entry_formatted = config.format_price(entry_price)
+        target_formatted = config.format_price(target_price)
+        stop_formatted = config.format_price(stop_loss)
+        
+        # Calculate percentages
+        profit_pct = ((target_price - entry_price) / entry_price) * 100
+        loss_pct = ((entry_price - stop_loss) / entry_price) * 100
+        
+        # Risk/Reward ratio
+        risk_reward = profit_pct / loss_pct if loss_pct > 0 else 0
         
         # Format timestamps
         created_time = datetime.fromisoformat(signal_data['created_at']).strftime('%Y-%m-%d %H:%M:%S')
@@ -157,13 +172,14 @@ class EmailSender:
                 .header {{ text-align: center; background-color: #2E7D32; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }}
                 .signal-info {{ background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
                 .price-info {{ display: flex; justify-content: space-between; margin-bottom: 15px; }}
-                .price-box {{ text-align: center; padding: 10px; border-radius: 5px; flex: 1; margin: 0 5px; }}
-                .entry {{ background-color: #e3f2fd; }}
-                .target {{ background-color: #e8f5e8; }}
-                .stop {{ background-color: #ffebee; }}
+                .price-box {{ text-align: center; padding: 15px; border-radius: 5px; flex: 1; margin: 0 8px; }}
+                .entry {{ background-color: #e3f2fd; border: 2px solid #2196f3; }}
+                .target {{ background-color: #e8f5e8; border: 2px solid #4caf50; }}
+                .stop {{ background-color: #ffebee; border: 2px solid #f44336; }}
                 .technical {{ background-color: #f3e5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
                 .footer {{ text-align: center; color: #666; font-size: 12px; margin-top: 20px; }}
                 .warning {{ background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 5px; margin-top: 20px; }}
+                .risk-reward {{ background-color: #e1f5fe; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #01579b; }}
             </style>
         </head>
         <body>
@@ -171,7 +187,7 @@ class EmailSender:
                 <div class="header">
                     <h1>🚀 CRYPTO TRADING SIGNAL</h1>
                     <h2>{signal_data['symbol']}</h2>
-                    <p>Confidence: {signal_data['confidence']*100:.1f}%</p>
+                    <p><strong>Confidence: {signal_data['confidence']*100:.1f}%</strong></p>
                 </div>
                 
                 <div class="signal-info">
@@ -185,44 +201,54 @@ class EmailSender:
                 <div class="price-info">
                     <div class="price-box entry">
                         <h4>🎯 Entry Price</h4>
-                        <p><strong>${signal_data['entry_price']:,.2f}</strong></p>
+                        <p><strong>{entry_formatted}</strong></p>
+                        <p style="font-size: 12px;">Buy at this level</p>
                     </div>
                     <div class="price-box target">
                         <h4>📈 Target Price</h4>
-                        <p><strong>${signal_data['target_price']:,.2f}</strong></p>
-                        <p style="color: green;">+{profit_pct:.2f}%</p>
+                        <p><strong>{target_formatted}</strong></p>
+                        <p style="color: green; font-weight: bold;">+{profit_pct:.2f}%</p>
                     </div>
                     <div class="price-box stop">
                         <h4>🛑 Stop Loss</h4>
-                        <p><strong>${signal_data['stop_loss']:,.2f}</strong></p>
-                        <p style="color: red;">-{loss_pct:.2f}%</p>
+                        <p><strong>{stop_formatted}</strong></p>
+                        <p style="color: red; font-weight: bold;">-{loss_pct:.2f}%</p>
                     </div>
+                </div>
+                
+                <div class="risk-reward">
+                    <h3>⚖️ Risk Management</h3>
+                    <p><strong>Risk/Reward Ratio:</strong> 1:{risk_reward:.2f}</p>
+                    <p><strong>Potential Profit:</strong> <span style="color: green;">+{profit_pct:.2f}%</span></p>
+                    <p><strong>Maximum Loss:</strong> <span style="color: red;">-{loss_pct:.2f}%</span></p>
+                    <p><strong>Recommendation:</strong> Use only 2-5% of your portfolio for this trade</p>
                 </div>
                 
                 <div class="technical">
                     <h3>🔍 Technical Analysis</h3>
                     <p><strong>RSI:</strong> {signal_data['rsi']:.1f}</p>
-                    <p><strong>MACD:</strong> {signal_data['macd']:.4f}</p>
-                    <p><strong>MACD Signal:</strong> {signal_data['macd_signal']:.4f}</p>
-                    <p><strong>Bollinger Upper:</strong> ${signal_data['bb_upper']:,.2f}</p>
-                    <p><strong>Bollinger Lower:</strong> ${signal_data['bb_lower']:,.2f}</p>
-                    <p><strong>Volume Ratio:</strong> {signal_data['volume_ratio']:.2f}</p>
+                    <p><strong>MACD:</strong> {signal_data['macd']:.6f}</p>
+                    <p><strong>MACD Signal:</strong> {signal_data['macd_signal']:.6f}</p>
+                    <p><strong>Bollinger Upper:</strong> {config.format_price(signal_data['bb_upper'])}</p>
+                    <p><strong>Bollinger Lower:</strong> {config.format_price(signal_data['bb_lower'])}</p>
+                    <p><strong>Volume Ratio:</strong> {signal_data['volume_ratio']:.2f}x</p>
                 </div>
                 
                 <div class="warning">
-                    <h4>⚠️ Risk Warning</h4>
-                    <p>This is an automated signal based on technical analysis. Please:</p>
+                    <h4>⚠️ Important Risk Warning</h4>
+                    <p><strong>This is a HIGH-QUALITY signal (55%+ confidence), but remember:</strong></p>
                     <ul>
-                        <li>Do your own research before trading</li>
-                        <li>Only invest what you can afford to lose</li>
-                        <li>Use proper risk management</li>
-                        <li>Consider market conditions</li>
+                        <li><strong>Never risk more than 2-5% of your portfolio</strong></li>
+                        <li><strong>Always use the stop loss - no exceptions!</strong></li>
+                        <li><strong>Take profit at target or use trailing stop</strong></li>
+                        <li><strong>Market conditions can change rapidly</strong></li>
+                        <li><strong>Do your own research before trading</strong></li>
                     </ul>
                 </div>
                 
                 <div class="footer">
-                    <p>Generated by Crypto Signal Bot v{signal_data['model_version']}</p>
-                    <p>Model used {signal_data['features_used']} features for prediction</p>
+                    <p><strong>Generated by Advanced AI Signal Bot v{signal_data['model_version']}</strong></p>
+                    <p>Using {signal_data['features_used']} technical features for analysis</p>
                     <p>This email was sent automatically. Do not reply.</p>
                 </div>
             </div>
