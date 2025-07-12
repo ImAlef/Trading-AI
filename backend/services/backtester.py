@@ -379,7 +379,7 @@ class Backtester:
         """Run complete backtest"""
         try:
             if symbols is None:
-                symbols = config.TRADING_PAIRS[:5]  # Test with first 5 pairs
+                symbols = config.TRADING_PAIRS  # Test with first 5 pairs
             
             logger.info(f"Starting backtest: {len(symbols)} symbols, {days} days, ${initial_capital} capital")
             

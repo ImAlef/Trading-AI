@@ -123,3 +123,92 @@
 2025-07-09 15:01:04,065 - INFO -    Daily signals: 0
 2025-07-09 15:03:16,541 - INFO - Email sent successfully to arianakbari043@gmail.com
 2025-07-09 15:03:16,541 - INFO - ALERT: Crypto Signal Bot stopped by user.
+2025-07-12 11:37:00,781 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 11:37:00,782 - INFO - Features: 66
+2025-07-12 11:37:00,782 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 11:37:07,395 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 11:37:07,397 - INFO - ALERT: Crypto Signal Bot with Live Learning started successfully and is monitoring the markets. Live Learning System is active with adaptive threshold: 0.550
+2025-07-12 11:40:09,211 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 11:40:09,212 - INFO - ALERT: Crypto Signal Bot stopped by user.
+2025-07-12 11:40:13,924 - INFO - Initializing Automated Scanner with Live Learning...
+2025-07-12 11:40:13,959 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 11:40:13,960 - INFO - Features: 66
+2025-07-12 11:40:13,960 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 11:40:13,961 - INFO - 🧠 Live Learning System initialized
+2025-07-12 11:40:13,961 - INFO - 🧠 Live learning system initialized!
+2025-07-12 11:40:13,961 - INFO - ML model loaded: v20250710_135838
+2025-07-12 11:40:13,961 - INFO - Live Learning System: ACTIVE
+2025-07-12 11:40:13,961 - INFO - 
+🧠 LIVE LEARNING STATUS: Initializing
+📊 Current Threshold: 0.550
+⚡ Active Signals: 0
+🏁 Completed Signals: 0
+
+2025-07-12 11:40:13,961 - INFO - Email notifications enabled
+2025-07-12 11:40:13,961 - INFO - Scanner initialized successfully
+2025-07-12 11:40:13,961 - INFO - Starting continuous scanning mode with Live Learning...
+2025-07-12 11:40:13,961 - INFO - Scan interval: 15.0 minutes
+2025-07-12 11:40:18,639 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 11:40:18,640 - INFO - ALERT: Crypto Signal Bot with Live Learning started successfully and is monitoring the markets. Live Learning System is active with adaptive threshold: 0.550
+2025-07-12 11:48:25,084 - INFO - Scanning stopped by user
+2025-07-12 11:48:30,099 - INFO - 🛑 Live learning monitoring stopped
+2025-07-12 11:48:30,100 - INFO - Live learning monitoring stopped
+2025-07-12 11:48:35,890 - INFO - Bot stopped by user via KeyboardInterrupt
+2025-07-12 12:27:53,701 - INFO - Initializing Automated Scanner with Live Learning...
+2025-07-12 12:27:53,735 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 12:27:53,736 - INFO - Features: 66
+2025-07-12 12:27:53,736 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 12:27:53,736 - INFO - 🚀 OPTIMIZED Live Learning System initialized
+2025-07-12 12:27:53,736 - INFO -    Initial threshold: 0.450
+2025-07-12 12:27:53,737 - INFO -    Learning sensitivity: 0.03
+2025-07-12 12:27:53,737 - INFO - 🧠 Live learning system initialized!
+2025-07-12 12:27:53,737 - INFO - ML model loaded: v20250710_135838
+2025-07-12 12:27:53,737 - INFO - Live Learning System: ACTIVE
+2025-07-12 12:27:53,737 - INFO - 
+🧠 LIVE LEARNING STATUS: Initializing
+📊 Current Threshold: 0.550
+⚡ Active Signals: 0
+🏁 Completed Signals: 0
+
+2025-07-12 12:27:53,737 - INFO - Email notifications enabled
+2025-07-12 12:27:53,737 - INFO - Scanner initialized successfully
+2025-07-12 12:27:53,737 - INFO - Starting continuous scanning mode with Live Learning...
+2025-07-12 12:27:53,737 - INFO - Scan interval: 10.0 minutes
+2025-07-12 12:27:59,059 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 12:27:59,061 - INFO - ALERT: Crypto Signal Bot with Live Learning started successfully and is monitoring the markets. Live Learning System is active with adaptive threshold: 0.450
+2025-07-12 12:30:58,940 - INFO - Scanning stopped by user
+2025-07-12 12:31:03,944 - INFO - 🛑 Live learning monitoring stopped
+2025-07-12 12:31:03,944 - INFO - Live learning monitoring stopped
+2025-07-12 12:31:08,517 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 12:31:08,518 - INFO - ALERT: Crypto Signal Bot stopped by user.
+2025-07-12 12:32:09,230 - INFO - 🚀 Initializing Automated Scanner with Auto-Training...
+2025-07-12 12:32:09,260 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 12:32:09,260 - INFO - Features: 66
+2025-07-12 12:32:09,260 - INFO - ✅ Existing model found and loaded
+2025-07-12 12:32:09,264 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 12:32:09,264 - INFO - Features: 66
+2025-07-12 12:32:09,264 - INFO - Model loaded successfully: v20250710_135838
+2025-07-12 12:32:09,265 - INFO - 🚀 OPTIMIZED Live Learning System initialized
+2025-07-12 12:32:09,265 - INFO -    Initial threshold: 0.450
+2025-07-12 12:32:09,265 - INFO -    Learning sensitivity: 0.03
+2025-07-12 12:32:09,265 - INFO - 🧠 Live learning system initialized!
+2025-07-12 12:32:09,265 - INFO - ✅ ML model ready: v20250710_135838
+2025-07-12 12:32:09,265 - INFO - 🧠 Live Learning System: ACTIVE
+2025-07-12 12:32:09,265 - INFO - 
+🧠 LIVE LEARNING STATUS: Initializing
+📊 Current Threshold: 0.550
+⚡ Active Signals: 0
+🏁 Completed Signals: 0
+
+2025-07-12 12:32:09,266 - INFO - ✅ Email notifications enabled
+2025-07-12 12:32:09,266 - INFO - 🎯 Scanner initialized successfully
+2025-07-12 12:32:09,266 - INFO - 🔄 Starting continuous scanning mode...
+2025-07-12 12:32:09,266 - INFO - 📅 Scan interval: 10.0 minutes
+2025-07-12 12:32:09,266 - INFO - 📅 Scheduling weekly model retraining...
+2025-07-12 12:32:33,586 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 12:32:33,587 - INFO - ALERT: Crypto Signal Bot with Auto-Training started successfully (Adaptive threshold: 0.450)
+2025-07-12 12:33:42,772 - INFO - 👋 Scanning stopped by user
+2025-07-12 12:33:47,785 - INFO - 🛑 Live learning monitoring stopped
+2025-07-12 12:33:47,785 - INFO - 🛑 Live learning monitoring stopped
+2025-07-12 12:34:01,584 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-12 12:34:01,585 - INFO - ALERT: Crypto Signal Bot stopped by user.

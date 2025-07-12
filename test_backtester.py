@@ -181,7 +181,7 @@ def run_full_backtest():
         backtester = Backtester()
         
         # Configuration
-        symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT"]  # 4 symbols for faster testing
+        symbols = config.TRADING_PAIRS  # 4 symbols for faster testing
         days = 30
         initial_capital = 20.0
         

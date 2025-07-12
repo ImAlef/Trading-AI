@@ -8,6 +8,7 @@ from config import config
 from backend.services.fallback_data_collector import FallbackDataCollector
 from backend.services.feature_engineer import FeatureEngineer
 from backend.services.ml_model import MLModel
+from backend.services.live_learning import LiveLearningSystem
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +73,7 @@ class TradingSignal:
 
 class SignalDetector:
     """
-    Main signal detection system
+    Main signal detection system با قابلیت یادگیری زنده
     """
     
     def __init__(self):
@@ -80,6 +81,9 @@ class SignalDetector:
         self.feature_engineer = FeatureEngineer()
         self.ml_model = MLModel()
         self.active_signals: List[TradingSignal] = []
+        
+        # Live Learning System
+        self.live_learning: Optional[LiveLearningSystem] = None
         
     def load_model(self, model_path: str = None) -> bool:
         """Load the ML model"""
@@ -92,6 +96,9 @@ class SignalDetector:
             
             if success:
                 logger.info(f"Model loaded successfully: {self.ml_model.model_info['version']}")
+                
+                # Initialize live learning system
+                self.initialize_live_learning()
                 return True
             else:
                 logger.error("Failed to load ML model")
@@ -99,6 +106,21 @@ class SignalDetector:
                 
         except Exception as e:
             logger.error(f"Error loading model: {str(e)}")
+            return False
+    
+    def initialize_live_learning(self) -> bool:
+        """راه‌اندازی سیستم یادگیری زنده"""
+        try:
+            self.live_learning = LiveLearningSystem(
+                self.data_collector,
+                self.feature_engineer, 
+                self.ml_model
+            )
+            logger.info("🧠 Live learning system initialized!")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to initialize live learning: {str(e)}")
             return False
     
     def analyze_symbol(self, symbol: str, timeframe: str = "1h") -> Optional[TradingSignal]:
@@ -128,10 +150,16 @@ class SignalDetector:
             # Step 4: Make prediction
             prediction, confidence = self.ml_model.predict_single(latest_features)
             
-            logger.info(f"{symbol}: Prediction={prediction}, Confidence={confidence:.3f}")
+            # Step 5: Use adaptive threshold if live learning is active
+            threshold = config.CONFIDENCE_THRESHOLD
+            if self.live_learning:
+                threshold = self.live_learning.get_adaptive_threshold()
+                logger.info(f"{symbol}: Prediction={prediction}, Confidence={confidence:.3f}, Adaptive Threshold={threshold:.3f}")
+            else:
+                logger.info(f"{symbol}: Prediction={prediction}, Confidence={confidence:.3f}")
             
-            # Step 5: Check if signal meets criteria
-            if prediction == 1 and confidence >= config.CONFIDENCE_THRESHOLD:
+            # Step 6: Check if signal meets criteria
+            if prediction == 1 and confidence >= threshold:
                 
                 # Get current market data
                 current_price = latest_features['close'].iloc[-1]
@@ -147,6 +175,11 @@ class SignalDetector:
                 
                 # Additional filters
                 if self._validate_signal(signal):
+                    # Register signal for live learning
+                    if self.live_learning:
+                        signal_id = self.live_learning.register_signal(signal, latest_features)
+                        logger.info(f"🧠 Signal registered for live learning: {signal_id}")
+                    
                     logger.info(f"✅ Valid signal generated for {symbol}")
                     return signal
                 else:
@@ -245,114 +278,110 @@ class SignalDetector:
             return current_price * 1.03  # Default 3% above current price
     
     def _calculate_entry_price(self, current_price: float, latest_row: pd.Series, confidence: float) -> float:
-        """Calculate optimal entry price"""
+        """🚀 محاسبه قیمت ورود بهینه‌شده"""
         try:
-            # For high confidence signals, enter at market price
-            if confidence > 0.8:
-                return current_price
-            
-            # For medium confidence, wait for a small pullback
-            elif confidence > 0.65:
-                pullback_pct = 0.005  # 0.5% pullback
+            # منطق بهینه‌شده از بک‌تست
+            if confidence > 0.7:
+                return current_price  # ورود فوری برای confidence بالا
+            elif confidence > 0.6:
+                pullback_pct = 0.003  # 0.3% pullback کوچک
                 return current_price * (1 - pullback_pct)
-            
-            # For lower confidence, wait for bigger pullback
             else:
-                pullback_pct = 0.01  # 1% pullback
+                pullback_pct = 0.007  # 0.7% pullback متوسط
                 return current_price * (1 - pullback_pct)
             
         except Exception as e:
-            logger.error(f"Error calculating entry price: {str(e)}")
+            logger.error(f"Error calculating optimized entry price: {str(e)}")
             return current_price
     
     def _calculate_stop_loss(self, entry_price: float, atr: float, support_level: float, 
                            latest_row: pd.Series, confidence: float) -> float:
-        """Calculate dynamic stop loss"""
+        """🚀 محاسبه stop loss بهینه‌شده"""
         try:
-            # ATR-based stop loss
-            atr_multiplier = 1.5 if confidence > 0.7 else 2.0
+            # ATR-based stop loss بهینه‌شده
+            atr_multiplier = 1.2 if confidence > 0.7 else 1.5  # تنگ‌تر
             atr_stop = entry_price - (atr * atr_multiplier)
             
             # Support-based stop loss
-            support_buffer = entry_price * 0.005  # 0.5% buffer below support
+            support_buffer = entry_price * 0.003  # کمتر از 0.005
             support_stop = support_level - support_buffer
             
-            # Use the higher of the two (less aggressive)
+            # استفاده از بالاتر (کمتر aggressive)
             calculated_stop = max(atr_stop, support_stop)
             
-            # Apply maximum loss limit
-            max_loss_pct = config.MAX_STOP_LOSS
+            # 🚀 حداکثر ضرر بهینه‌شده
+            max_loss_pct = config.MAX_STOP_LOSS  # 1.2%
             max_stop = entry_price * (1 - max_loss_pct)
             
-            # Use the higher stop (less risky)
+            # استفاده از بالاتر (کمتر ریسک)
             final_stop = max(calculated_stop, max_stop)
             
             return final_stop
             
         except Exception as e:
-            logger.error(f"Error calculating stop loss: {str(e)}")
+            logger.error(f"Error calculating optimized stop loss: {str(e)}")
             return entry_price * (1 - config.MAX_STOP_LOSS)
     
     def _calculate_take_profit(self, entry_price: float, stop_loss: float, resistance_level: float,
                               latest_row: pd.Series, confidence: float) -> float:
-        """Calculate dynamic take profit"""
+        """🚀 محاسبه take profit بهینه‌شده"""
         try:
-            # Calculate risk (entry to stop loss)
+            # محاسبه ریسک
             risk = entry_price - stop_loss
             
-            # Base risk-reward ratio based on confidence
+            # 🚀 نسبت ریسک-سود بهینه‌شده
             if confidence > 0.8:
-                risk_reward_ratio = 3.0  # 3:1 for high confidence
+                risk_reward_ratio = 4.0  # بالاتر از 3.0
             elif confidence > 0.7:
-                risk_reward_ratio = 2.5  # 2.5:1 for medium-high confidence
+                risk_reward_ratio = 3.5  # بالاتر از 2.5
+            elif confidence > 0.6:
+                risk_reward_ratio = 3.0  # بالاتر از 2.0
             else:
-                risk_reward_ratio = 2.0  # 2:1 for medium confidence
+                risk_reward_ratio = 2.5  # بالاتر از 2.0
             
-            # Calculate target based on risk-reward
+            # محاسبه target بر اساس ریسک-سود
             risk_reward_target = entry_price + (risk * risk_reward_ratio)
             
-            # Calculate resistance-based target
-            resistance_buffer = entry_price * 0.005  # 0.5% buffer before resistance
+            # محاسبه target بر اساس resistance
+            resistance_buffer = entry_price * 0.003  # کمتر از 0.005
             resistance_target = resistance_level - resistance_buffer
             
-            # Use the lower of the two (more conservative)
+            # استفاده از کمتر (محافظه‌کارانه‌تر)
             calculated_target = min(risk_reward_target, resistance_target)
             
-            # Apply minimum profit requirement
-            min_profit_pct = config.MIN_PROFIT_TARGET
+            # 🚀 حداقل سود بهینه‌شده
+            min_profit_pct = config.MIN_PROFIT_TARGET  # 1.5%
             min_target = entry_price * (1 + min_profit_pct)
             
-            # Use the higher target (ensure minimum profit)
+            # استفاده از بالاتر (حداقل سود)
             final_target = max(calculated_target, min_target)
             
             return final_target
             
         except Exception as e:
-            logger.error(f"Error calculating take profit: {str(e)}")
+            logger.error(f"Error calculating optimized take profit: {str(e)}")
             return entry_price * (1 + config.MIN_PROFIT_TARGET)
     
     def _validate_signal(self, signal: TradingSignal) -> bool:
-        """
-        Apply additional filters to validate signal quality
-        """
+        """🚀 اعتبارسنجی سیگنال بهینه‌شده"""
         try:
-            # Filter 1: Risk-reward ratio
+            # 🚀 فیلتر 1: نسبت ریسک-سود کمتر
             risk_reward = signal.get_risk_ratio()
-            if risk_reward < 1.5:  # Minimum 1.5:1 risk-reward
+            if risk_reward < config.SIGNAL_VALIDATION["min_risk_reward"]:  # 1.2
                 logger.info(f"Signal filtered: Poor risk-reward ratio ({risk_reward:.2f})")
                 return False
             
-            # Filter 2: RSI not extremely overbought
-            if signal.rsi > 85:
+            # 🚀 فیلتر 2: RSI اجازه بالاتر
+            if signal.rsi > config.SIGNAL_VALIDATION["max_rsi_overbought"]:  # 90
                 logger.info(f"Signal filtered: RSI too high ({signal.rsi:.1f})")
                 return False
             
-            # Filter 3: Volume confirmation
-            if signal.volume_ratio < 0.8:  # Volume should be decent
+            # 🚀 فیلتر 3: Volume کمتر سخت‌گیری
+            if signal.volume_ratio < config.SIGNAL_VALIDATION["min_volume_ratio"]:  # 0.6
                 logger.info(f"Signal filtered: Low volume ({signal.volume_ratio:.2f})")
                 return False
             
-            # Filter 4: Check for duplicate signals
+            # فیلتر 4: تکراری نبودن
             if self._is_duplicate_signal(signal):
                 logger.info(f"Signal filtered: Duplicate signal for {signal.symbol}")
                 return False
@@ -419,11 +448,18 @@ class SignalDetector:
         self._cleanup_expired_signals()
         return self.active_signals.copy()
     
+    def get_live_learning_status(self) -> Dict:
+        """گرفتن وضعیت یادگیری زنده"""
+        if not self.live_learning:
+            return {'status': 'disabled'}
+        
+        return self.live_learning.get_live_performance()
+    
     def get_signal_summary(self) -> Dict:
         """Get summary of signal detection system"""
         active_signals = self.get_active_signals()
         
-        return {
+        base_summary = {
             'active_signals': len(active_signals),
             'model_loaded': self.ml_model.is_trained,
             'model_version': self.ml_model.model_info.get('version', 'None'),
@@ -440,6 +476,26 @@ class SignalDetector:
                 for signal in active_signals
             ]
         }
+        
+        # Add live learning info
+        if self.live_learning:
+            live_status = self.get_live_learning_status()
+            base_summary.update({
+                'live_learning': live_status,
+                'adaptive_threshold': self.live_learning.get_adaptive_threshold()
+            })
+        
+        return base_summary
+    
+    def get_enhanced_summary(self) -> Dict:
+        """خلاصه پیشرفته با یادگیری زنده"""
+        summary = self.get_signal_summary()
+        
+        if self.live_learning:
+            learning_summary = self.live_learning.get_learning_summary()
+            summary['learning_summary_text'] = learning_summary
+        
+        return summary
     
     def validate_signal_outcome(self, signal: TradingSignal) -> Dict:
         """
@@ -488,6 +544,7 @@ class SignalDetector:
             'data_collector': 'online',
             'feature_engineer': 'ready',
             'ml_model': 'trained' if self.ml_model.is_trained else 'not_trained',
+            'live_learning': 'active' if self.live_learning else 'disabled',
             'active_signals': len(self.get_active_signals()),
             'model_info': self.ml_model.model_info,
             'last_update': datetime.now().isoformat()
