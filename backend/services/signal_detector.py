@@ -9,6 +9,7 @@ from backend.services.fallback_data_collector import FallbackDataCollector
 from backend.services.feature_engineer import FeatureEngineer
 from backend.services.ml_model import MLModel
 from backend.services.live_learning import LiveLearningSystem
+from backend.services.multi_timeframe_detector import MultiTimeframeDetector
 
 logger = logging.getLogger(__name__)
 
@@ -82,9 +83,182 @@ class SignalDetector:
         self.ml_model = MLModel()
         self.active_signals: List[TradingSignal] = []
         
+        # 🆕 اضافه کردن Multi-Timeframe Detector
+        self.mtf_detector = MultiTimeframeDetector()
+        
         # Live Learning System
         self.live_learning: Optional[LiveLearningSystem] = None
+
+    def analyze_symbol_enhanced(self, symbol: str, use_multi_timeframe: bool = True) -> Optional[TradingSignal]:
+        """
+        تحلیل پیشرفته symbol با multi-timeframe
+        """
+        try:
+            logger.info(f"🔍 Enhanced analysis for {symbol} (MTF: {use_multi_timeframe})")
+            
+            if use_multi_timeframe and self.mtf_detector:
+                # استفاده از Multi-Timeframe Analysis
+                mtf_result = self.mtf_detector.analyze_symbol_multi_timeframe(symbol)
+                
+                if mtf_result:
+                    logger.info(f"✅ Multi-timeframe signal found for {symbol}")
+                    
+                    # دریافت داده‌های 1h برای محاسبه قیمت‌ها
+                    df = self.data_collector.get_klines(symbol, "1h", limit=config.LOOKBACK_PERIODS + 50)
+                    
+                    if df.empty:
+                        logger.warning(f"⚠️ No market data for {symbol}")
+                        return None
+                    
+                    # Feature engineering برای محاسبه قیمت‌ها
+                    df_features = self.feature_engineer.prepare_features_for_prediction(df)
+                    
+                    if df_features.empty:
+                        return None
+                    
+                    # ساخت سیگنال با confidence از multi-timeframe
+                    signal = self._create_signal_from_mtf(
+                        symbol=symbol,
+                        mtf_result=mtf_result,
+                        features=df_features,
+                        timeframe="multi"
+                    )
+                    
+                    # اعتبارسنجی سیگنال
+                    if self._validate_signal(signal):
+                        # ثبت برای live learning
+                        if self.live_learning:
+                            signal_id = self.live_learning.register_signal(signal, df_features)
+                            logger.info(f"🧠 MTF Signal registered for live learning: {signal_id}")
+                        
+                        return signal
+                    else:
+                        logger.info(f"❌ Multi-timeframe signal filtered out for {symbol}")
+                        return None
+                else:
+                    logger.info(f"⚪ No multi-timeframe signal for {symbol}")
+                    return None
+            else:
+                # استفاده از روش قدیمی (single timeframe)
+                return self.analyze_symbol(symbol)
+                
+        except Exception as e:
+            logger.error(f"❌ Error in enhanced analysis for {symbol}: {str(e)}")
+            return None
+
+    def _create_signal_from_mtf(self, symbol: str, mtf_result: Dict, 
+                            features: pd.DataFrame, timeframe: str) -> TradingSignal:
+        """
+        ساخت سیگنال از نتیجه multi-timeframe
+        """
+        try:
+            # استفاده از confidence از multi-timeframe
+            confidence = mtf_result['confidence']
+            
+            # دریافت آخرین قیمت
+            current_price = features['close'].iloc[-1]
+            latest_row = features.iloc[-1]
+            
+            # محاسبه قیمت‌ها (همان روش قبلی)
+            entry_price = self._calculate_entry_price(current_price, latest_row, confidence)
+            
+            # محاسبه ATR برای stop loss
+            atr = latest_row.get('atr', current_price * 0.02)
+            support_level = self._calculate_support_level(features, current_price)
+            resistance_level = self._calculate_resistance_level(features, current_price)
+            
+            stop_loss = self._calculate_stop_loss(entry_price, atr, support_level, latest_row, confidence)
+            target_price = self._calculate_take_profit(entry_price, stop_loss, resistance_level, latest_row, confidence)
+            
+            # ساخت سیگنال
+            signal = TradingSignal(
+                symbol=symbol,
+                signal_type='BUY',
+                entry_price=entry_price,
+                target_price=target_price,
+                stop_loss=stop_loss,
+                confidence=confidence,
+                created_at=datetime.now(),
+                expires_at=datetime.now() + timedelta(hours=config.SIGNAL_EXPIRY_HOURS),
+                rsi=latest_row.get('rsi', 0),
+                macd=latest_row.get('macd', 0),
+                macd_signal=latest_row.get('macd_signal', 0),
+                bb_upper=latest_row.get('bb_upper', 0),
+                bb_lower=latest_row.get('bb_lower', 0),
+                volume_ratio=latest_row.get('volume_ratio', 1),
+                model_version=f"MTF_{self.ml_model.model_info.get('version', 'unknown')}",
+                features_used=len(self.feature_engineer.get_feature_columns()),
+                timeframe=timeframe
+            )
+            
+            # اضافه کردن اطلاعات multi-timeframe به سیگنال
+            signal.mtf_info = {
+                'timeframes_agreed': mtf_result['timeframes_agreed'],
+                'total_timeframes': mtf_result['total_timeframes'],
+                'trend_alignment': mtf_result['trend_alignment'],
+                'htf_confirmation': mtf_result['htf_confirmation'],
+                'base_confidence': mtf_result['base_confidence'],
+                'timeframe_breakdown': mtf_result.get('timeframe_breakdown', {})
+            }
+            
+            return signal
+            
+        except Exception as e:
+            logger.error(f"❌ Error creating MTF signal: {str(e)}")
+            # fallback به محاسبه ساده
+            return self._create_signal(symbol, features['close'].iloc[-1], mtf_result['confidence'], features, timeframe)
+
+    def scan_markets_enhanced(self, symbols: List[str] = None, use_multi_timeframe: bool = True) -> List[TradingSignal]:
+        """
+        اسکن پیشرفته بازارها با multi-timeframe
+        """
+        if symbols is None:
+            symbols = config.TRADING_PAIRS
         
+        scan_type = "Multi-Timeframe" if use_multi_timeframe else "Single-Timeframe"
+        logger.info(f"🔍 {scan_type} market scan starting for {len(symbols)} symbols...")
+        
+        signals = []
+        successful_scans = 0
+        
+        for symbol in symbols:
+            try:
+                signal = self.analyze_symbol_enhanced(symbol, use_multi_timeframe)
+                
+                if signal:
+                    signals.append(signal)
+                    self.active_signals.append(signal)
+                    
+                    # اطلاعات اضافی برای multi-timeframe
+                    if hasattr(signal, 'mtf_info') and signal.mtf_info:
+                        mtf_info = signal.mtf_info
+                        logger.info(f"📈 {scan_type} Signal: {symbol} @ {signal.confidence:.3f}")
+                        logger.info(f"   Timeframes: {mtf_info['timeframes_agreed']}/{mtf_info['total_timeframes']}")
+                        logger.info(f"   Trend alignment: {mtf_info['trend_alignment']:.2f}")
+                        logger.info(f"   HTF confirmation: {'✅' if mtf_info['htf_confirmation'] else '❌'}")
+                    else:
+                        logger.info(f"📈 Single-TF Signal: {symbol} @ {signal.confidence:.3f}")
+                
+                successful_scans += 1
+                
+                # Rate limiting
+                import time
+                time.sleep(0.15)  # کمی بیشتر برای multi-timeframe
+                
+            except Exception as e:
+                logger.error(f"❌ Error scanning {symbol}: {str(e)}")
+                continue
+        
+        # پاکسازی سیگنال‌های منقضی
+        self._cleanup_expired_signals()
+        
+        logger.info(f"✅ {scan_type} scan completed:")
+        logger.info(f"   Successful scans: {successful_scans}/{len(symbols)}")
+        logger.info(f"   New signals: {len(signals)}")
+        logger.info(f"   Active signals: {len(self.active_signals)}")
+        
+        return signals
+
     def load_model(self, model_path: str = None) -> bool:
         """Load the ML model"""
         try:
@@ -488,9 +662,34 @@ class SignalDetector:
         return base_summary
     
     def get_enhanced_summary(self) -> Dict:
-        """خلاصه پیشرفته با یادگیری زنده"""
+        """
+        خلاصه پیشرفته با اطلاعات multi-timeframe
+        """
         summary = self.get_signal_summary()
         
+        # اضافه کردن اطلاعات multi-timeframe
+        mtf_signals = [s for s in self.active_signals if hasattr(s, 'mtf_info') and s.mtf_info]
+        
+        summary.update({
+            'multi_timeframe_signals': len(mtf_signals),
+            'single_timeframe_signals': len(self.active_signals) - len(mtf_signals),
+            'mtf_detector_loaded': self.mtf_detector.models_loaded if self.mtf_detector else False
+        })
+        
+        # اطلاعات تفصیلی سیگنال‌های multi-timeframe
+        if mtf_signals:
+            summary['mtf_signal_details'] = []
+            for signal in mtf_signals:
+                if hasattr(signal, 'mtf_info') and signal.mtf_info:
+                    summary['mtf_signal_details'].append({
+                        'symbol': signal.symbol,
+                        'confidence': signal.confidence,
+                        'timeframes_agreed': signal.mtf_info['timeframes_agreed'],
+                        'trend_alignment': signal.mtf_info['trend_alignment'],
+                        'htf_confirmation': signal.mtf_info['htf_confirmation']
+                    })
+        
+        # اضافه کردن خلاصه live learning
         if self.live_learning:
             learning_summary = self.live_learning.get_learning_summary()
             summary['learning_summary_text'] = learning_summary

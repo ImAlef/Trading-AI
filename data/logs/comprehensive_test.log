@@ -1,0 +1,1183 @@
+2025-07-14 22:53:05,838 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:06,464 - INFO - Successfully fetched 100 candles for BTCUSDT
+2025-07-14 22:53:06,476 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:06,497 - INFO - Successfully calculated technical indicators for 100 rows
+2025-07-14 22:53:06,504 - INFO - Successfully calculated price features for 100 rows
+2025-07-14 22:53:06,508 - INFO - Successfully calculated trend features for 100 rows
+2025-07-14 22:53:06,514 - INFO - Successfully calculated pattern features for 100 rows
+2025-07-14 22:53:06,515 - INFO - Feature engineering for prediction completed: 100 -> 100 rows
+2025-07-14 22:53:06,515 - INFO - Created 71 features
+2025-07-14 22:53:06,547 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:53:06,552 - INFO - Features: 66
+2025-07-14 22:53:06,567 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 22:53:06,571 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:53:06,571 - INFO - Features: 66
+2025-07-14 22:53:06,571 - INFO - ✅ Models loaded for 4 timeframes
+2025-07-14 22:53:06,571 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 22:53:06,571 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:07,269 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 22:53:07,269 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:07,281 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:07,282 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:07,282 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:07,282 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:07,297 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:07,297 - INFO - Created 71 features
+2025-07-14 22:53:07,308 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:53:07,308 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:07,811 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:53:07,815 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:07,815 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:07,830 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:07,831 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:07,838 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:07,838 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:07,838 - INFO - Created 71 features
+2025-07-14 22:53:07,849 - INFO -    1h: 0 @ 0.051
+2025-07-14 22:53:07,849 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:08,258 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:53:08,268 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:08,289 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:08,289 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:08,289 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:08,304 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:08,304 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:08,304 - INFO - Created 71 features
+2025-07-14 22:53:08,315 - INFO -    4h: 0 @ 0.047
+2025-07-14 22:53:08,315 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:08,751 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 22:53:08,751 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:08,763 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:08,763 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:08,763 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:08,777 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:08,778 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:08,778 - INFO - Created 71 features
+2025-07-14 22:53:08,787 - INFO -    1d: 0 @ 0.055
+2025-07-14 22:53:08,787 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:08,787 - INFO - 🔍 Analyzing market sentiment for BTCUSDT
+2025-07-14 22:53:09,656 - INFO -    fear_greed: 0.40
+2025-07-14 22:53:09,678 - INFO -    news: 0.38
+2025-07-14 22:53:09,681 - INFO -    onchain: 0.03
+2025-07-14 22:53:09,681 - INFO -    social: -0.32
+2025-07-14 22:53:09,681 - INFO - 📊 Combined sentiment: 0.14 (conf: 0.57)
+2025-07-14 22:53:09,681 - INFO - 📋 Smart Cache initialized at data/cache
+2025-07-14 22:53:09,683 - INFO - 💼 Portfolio Manager initialized with $10,000.00
+2025-07-14 22:53:09,683 - INFO - 💰 Position size calculated: $700.00
+2025-07-14 22:53:09,683 - INFO -    Kelly: $700, Risk: $9000, Final: $700
+2025-07-14 22:53:09,683 - INFO - 💰 Position size calculated: $700.00
+2025-07-14 22:53:09,683 - INFO -    Kelly: $700, Risk: $9000, Final: $700
+2025-07-14 22:53:09,683 - INFO - 💰 Position size calculated: $700.00
+2025-07-14 22:53:09,683 - INFO -    Kelly: $700, Risk: $9000, Final: $700
+2025-07-14 22:53:09,683 - INFO - 💰 Position size calculated: $700.00
+2025-07-14 22:53:09,683 - INFO -    Kelly: $700, Risk: $9000, Final: $700
+2025-07-14 22:53:09,683 - INFO - ✅ Position opened: BTCUSDT
+2025-07-14 22:53:09,683 - INFO -    Size: $700.00 (Risk: $15.56)
+2025-07-14 22:53:09,683 - INFO -    Remaining capital: $9300.00
+2025-07-14 22:53:09,690 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:53:09,690 - INFO - Features: 66
+2025-07-14 22:53:09,690 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:53:09,690 - INFO - 🎯 Conservative Live Learning System initialized
+2025-07-14 22:53:09,690 - INFO -    Threshold: 0.550 (55% minimum)
+2025-07-14 22:53:09,690 - INFO -    Adaptation: Conservative mode
+2025-07-14 22:53:09,690 - INFO - 🧠 Live learning system initialized!
+2025-07-14 22:53:09,690 - INFO - 🔍 Enhanced analysis for BTCUSDT (MTF: True)
+2025-07-14 22:53:09,690 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 22:53:09,695 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:53:09,695 - INFO - Features: 66
+2025-07-14 22:53:09,695 - INFO - ✅ Models loaded for 4 timeframes
+2025-07-14 22:53:09,695 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 22:53:09,695 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:10,494 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 22:53:10,494 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:10,503 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:10,503 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:10,503 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:10,519 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:10,521 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:10,522 - INFO - Created 71 features
+2025-07-14 22:53:10,532 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:53:10,532 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:10,950 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:53:10,950 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:10,963 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:10,963 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:10,975 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:10,978 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:10,978 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:10,978 - INFO - Created 71 features
+2025-07-14 22:53:10,990 - INFO -    1h: 0 @ 0.051
+2025-07-14 22:53:10,990 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:11,530 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:53:11,530 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:11,530 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:11,544 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:11,544 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:11,559 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:11,562 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:11,563 - INFO - Created 71 features
+2025-07-14 22:53:11,574 - INFO -    4h: 0 @ 0.047
+2025-07-14 22:53:11,574 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:12,017 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 22:53:12,017 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:12,020 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:12,033 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:12,039 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:12,044 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:12,044 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:12,044 - INFO - Created 71 features
+2025-07-14 22:53:12,054 - INFO -    1d: 0 @ 0.055
+2025-07-14 22:53:12,056 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:12,056 - INFO - ⚪ No multi-timeframe signal for BTCUSDT
+2025-07-14 22:53:12,568 - INFO - 🔍 Enhanced analysis for ETHUSDT (MTF: True)
+2025-07-14 22:53:12,568 - INFO - 🔍 Multi-timeframe analysis for ETHUSDT
+2025-07-14 22:53:12,568 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:13,012 - INFO - Successfully fetched 96 candles for ETHUSDT
+2025-07-14 22:53:13,018 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:13,028 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:13,028 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:13,037 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:13,043 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:13,043 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:13,044 - INFO - Created 71 features
+2025-07-14 22:53:13,054 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:53:13,054 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:13,487 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:53:13,487 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:13,489 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:13,503 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:13,503 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:13,503 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:13,503 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:13,503 - INFO - Created 71 features
+2025-07-14 22:53:13,522 - INFO -    1h: 0 @ 0.219
+2025-07-14 22:53:13,522 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:13,994 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:53:13,994 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:14,006 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:14,006 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:14,006 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:14,020 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:14,022 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:14,023 - INFO - Created 71 features
+2025-07-14 22:53:14,031 - INFO -    4h: 0 @ 0.108
+2025-07-14 22:53:14,033 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:14,467 - INFO - Successfully fetched 90 candles for ETHUSDT
+2025-07-14 22:53:14,470 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:14,478 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:14,478 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:14,478 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:14,494 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:14,496 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:14,497 - INFO - Created 71 features
+2025-07-14 22:53:14,507 - INFO -    1d: 0 @ 0.086
+2025-07-14 22:53:14,507 - INFO - ❌ ETHUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:14,507 - INFO - ⚪ No multi-timeframe signal for ETHUSDT
+2025-07-14 22:53:15,014 - INFO - 🔍 Enhanced analysis for BNBUSDT (MTF: True)
+2025-07-14 22:53:15,014 - INFO - 🔍 Multi-timeframe analysis for BNBUSDT
+2025-07-14 22:53:15,014 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:15,388 - INFO - Successfully fetched 96 candles for BNBUSDT
+2025-07-14 22:53:15,390 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:15,399 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:15,400 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:15,400 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:15,411 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:15,411 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:15,411 - INFO - Created 71 features
+2025-07-14 22:53:15,424 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:53:15,424 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:15,873 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:53:15,873 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:15,882 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:15,889 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:15,889 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:15,899 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:15,899 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:15,899 - INFO - Created 71 features
+2025-07-14 22:53:15,907 - INFO -    1h: 0 @ 0.016
+2025-07-14 22:53:15,907 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:16,322 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:53:16,322 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:16,330 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:16,330 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:16,342 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:16,346 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:16,346 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:16,351 - INFO - Created 71 features
+2025-07-14 22:53:16,361 - INFO -    4h: 0 @ 0.082
+2025-07-14 22:53:16,361 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:16,771 - INFO - Successfully fetched 90 candles for BNBUSDT
+2025-07-14 22:53:16,771 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:16,775 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:16,775 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:16,791 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:16,791 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:16,797 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:16,797 - INFO - Created 71 features
+2025-07-14 22:53:16,807 - INFO -    1d: 0 @ 0.032
+2025-07-14 22:53:16,807 - INFO - ❌ BNBUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:16,807 - INFO - ⚪ No multi-timeframe signal for BNBUSDT
+2025-07-14 22:53:17,332 - INFO - 📋 Smart Cache initialized at data/cache
+2025-07-14 22:53:17,341 - INFO - 📊 Portfolio history loaded: 0 past trades
+2025-07-14 22:53:17,341 - INFO - 💼 Portfolio Manager initialized with $20,000.00
+2025-07-14 22:53:17,341 - INFO - 🚀 Enhanced Auto Scanner initialized!
+2025-07-14 22:53:17,343 - INFO - 🔍 Enhanced market scan starting for 3 symbols...
+2025-07-14 22:53:17,343 - INFO - 🔍 Analyzing market sentiment for BTCUSDT
+2025-07-14 22:53:18,017 - INFO -    fear_greed: 0.40
+2025-07-14 22:53:18,017 - INFO -    news: 0.38
+2025-07-14 22:53:18,017 - INFO -    onchain: -0.10
+2025-07-14 22:53:18,017 - INFO -    social: -0.23
+2025-07-14 22:53:18,017 - INFO - 📊 Combined sentiment: 0.09 (conf: 0.57)
+2025-07-14 22:53:18,017 - INFO - 📊 Market Sentiment: 0.09
+2025-07-14 22:53:18,017 - INFO - 🔍 Multi-Timeframe market scan starting for 3 symbols...
+2025-07-14 22:53:18,017 - INFO - 🔍 Enhanced analysis for BTCUSDT (MTF: True)
+2025-07-14 22:53:18,017 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 22:53:18,024 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:53:18,024 - INFO - Features: 66
+2025-07-14 22:53:18,026 - INFO - ✅ Models loaded for 4 timeframes
+2025-07-14 22:53:18,027 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 22:53:18,027 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:18,753 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 22:53:18,753 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:18,765 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:18,778 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:18,778 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:18,778 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:18,778 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:18,778 - INFO - Created 71 features
+2025-07-14 22:53:18,801 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:53:18,801 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:19,276 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:53:19,276 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:19,281 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:19,281 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:19,296 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:19,296 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:19,296 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:19,296 - INFO - Created 71 features
+2025-07-14 22:53:19,315 - INFO -    1h: 0 @ 0.047
+2025-07-14 22:53:19,315 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:19,754 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:53:19,754 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:19,770 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:19,770 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:19,770 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:19,784 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:19,784 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:19,784 - INFO - Created 71 features
+2025-07-14 22:53:19,799 - INFO -    4h: 0 @ 0.047
+2025-07-14 22:53:19,799 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:20,192 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 22:53:20,197 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:20,199 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:20,213 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:20,213 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:20,213 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:20,213 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:20,213 - INFO - Created 71 features
+2025-07-14 22:53:20,235 - INFO -    1d: 0 @ 0.047
+2025-07-14 22:53:20,235 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:20,235 - INFO - ⚪ No multi-timeframe signal for BTCUSDT
+2025-07-14 22:53:20,396 - INFO - 🔍 Enhanced analysis for ETHUSDT (MTF: True)
+2025-07-14 22:53:20,396 - INFO - 🔍 Multi-timeframe analysis for ETHUSDT
+2025-07-14 22:53:20,396 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:20,780 - INFO - Successfully fetched 96 candles for ETHUSDT
+2025-07-14 22:53:20,780 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:20,794 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:20,794 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:20,809 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:20,816 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:20,816 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:20,816 - INFO - Created 71 features
+2025-07-14 22:53:20,828 - INFO -    15m: 0 @ 0.003
+2025-07-14 22:53:20,828 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:21,266 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:53:21,266 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:21,282 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:21,282 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:21,296 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:21,296 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:21,296 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:21,296 - INFO - Created 71 features
+2025-07-14 22:53:21,314 - INFO -    1h: 0 @ 0.156
+2025-07-14 22:53:21,314 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:21,776 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:53:21,776 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:21,784 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:21,799 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:21,799 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:21,799 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:21,799 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:21,799 - INFO - Created 71 features
+2025-07-14 22:53:21,816 - INFO -    4h: 0 @ 0.099
+2025-07-14 22:53:21,821 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:22,219 - INFO - Successfully fetched 90 candles for ETHUSDT
+2025-07-14 22:53:22,219 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:22,228 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:22,238 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:22,242 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:22,246 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:22,246 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:22,246 - INFO - Created 71 features
+2025-07-14 22:53:22,258 - INFO -    1d: 0 @ 0.086
+2025-07-14 22:53:22,260 - INFO - ❌ ETHUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:22,260 - INFO - ⚪ No multi-timeframe signal for ETHUSDT
+2025-07-14 22:53:22,425 - INFO - 🔍 Enhanced analysis for BNBUSDT (MTF: True)
+2025-07-14 22:53:22,425 - INFO - 🔍 Multi-timeframe analysis for BNBUSDT
+2025-07-14 22:53:22,425 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:22,838 - INFO - Successfully fetched 96 candles for BNBUSDT
+2025-07-14 22:53:22,838 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:22,849 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:53:22,856 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:53:22,860 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:53:22,865 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:53:22,865 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:53:22,865 - INFO - Created 71 features
+2025-07-14 22:53:22,877 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:53:22,877 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:23,384 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:53:23,384 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:23,396 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:23,402 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:23,405 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:23,410 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:23,412 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:23,412 - INFO - Created 71 features
+2025-07-14 22:53:23,423 - INFO -    1h: 0 @ 0.019
+2025-07-14 22:53:23,423 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:23,861 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:53:23,861 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:23,881 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:53:23,882 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:53:23,891 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:53:23,891 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:53:23,891 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:53:23,891 - INFO - Created 71 features
+2025-07-14 22:53:23,908 - INFO -    4h: 0 @ 0.082
+2025-07-14 22:53:23,908 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:53:24,380 - INFO - Successfully fetched 90 candles for BNBUSDT
+2025-07-14 22:53:24,380 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:53:24,395 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:53:24,395 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:53:24,410 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:53:24,410 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:53:24,410 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:53:24,410 - INFO - Created 71 features
+2025-07-14 22:53:24,427 - INFO -    1d: 0 @ 0.032
+2025-07-14 22:53:24,429 - INFO - ❌ BNBUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:53:24,429 - INFO - ⚪ No multi-timeframe signal for BNBUSDT
+2025-07-14 22:53:24,593 - INFO - ✅ Multi-Timeframe scan completed:
+2025-07-14 22:53:24,593 - INFO -    Successful scans: 3/3
+2025-07-14 22:53:24,595 - INFO -    New signals: 0
+2025-07-14 22:53:24,595 - INFO -    Active signals: 0
+2025-07-14 22:53:24,595 - INFO - ✅ Enhanced scan completed in 7.25s
+2025-07-14 22:53:24,595 - INFO - 📊 Results Summary:
+2025-07-14 22:53:24,595 - INFO -    Signals found: 0
+2025-07-14 22:53:24,595 - INFO -    Positions opened: 0
+2025-07-14 22:53:24,595 - INFO -    Portfolio value: $9,300.00
+2025-07-14 22:53:24,595 - INFO -    Active positions: 0
+2025-07-14 22:53:24,595 - INFO -    Portfolio risk: 0.0%
+2025-07-14 22:53:24,595 - INFO -    Win rate: 0.0%
+2025-07-14 22:53:24,595 - INFO -    Cache hit rate: 0.0%
+2025-07-14 22:53:24,595 - INFO -    Avg request time: 7252.3ms
+2025-07-14 22:53:24,595 - INFO -    Performance gain: No improvement
+2025-07-14 22:53:24,595 - INFO -    Market sentiment: Neutral (0.09)
+2025-07-14 22:53:24,595 - ERROR - ❌ Real performance test failed: 'EnhancedAutoScanner' object has no attribute 'get_comprehensive_status'
+2025-07-14 22:53:26,850 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-14 22:53:28,832 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-14 22:53:28,839 - INFO - Test email sent successfully
+2025-07-14 22:59:19,337 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:20,033 - INFO - Successfully fetched 100 candles for BTCUSDT
+2025-07-14 22:59:20,033 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:20,036 - INFO - Successfully calculated technical indicators for 100 rows
+2025-07-14 22:59:20,051 - INFO - Successfully calculated price features for 100 rows
+2025-07-14 22:59:20,054 - INFO - Successfully calculated trend features for 100 rows
+2025-07-14 22:59:20,054 - INFO - Successfully calculated pattern features for 100 rows
+2025-07-14 22:59:20,054 - INFO - Feature engineering for prediction completed: 100 -> 100 rows
+2025-07-14 22:59:20,054 - INFO - Created 71 features
+2025-07-14 22:59:20,081 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:59:20,081 - INFO - Features: 66
+2025-07-14 22:59:20,104 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 22:59:20,106 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:59:20,106 - INFO - Features: 66
+2025-07-14 22:59:20,106 - INFO - ✅ Models loaded for 4 timeframes
+2025-07-14 22:59:20,106 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 22:59:20,109 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:21,041 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 22:59:21,041 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:21,045 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:21,054 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:21,061 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:21,063 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:21,063 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:21,063 - INFO - Created 71 features
+2025-07-14 22:59:21,079 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:59:21,079 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:21,575 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:59:21,581 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:21,589 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:21,594 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:21,605 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:21,605 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:21,611 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:21,611 - INFO - Created 71 features
+2025-07-14 22:59:21,622 - INFO -    1h: 0 @ 0.047
+2025-07-14 22:59:21,622 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:22,126 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:59:22,126 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:22,148 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:22,155 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:22,162 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:22,168 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:22,168 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:22,168 - INFO - Created 71 features
+2025-07-14 22:59:22,180 - INFO -    4h: 0 @ 0.038
+2025-07-14 22:59:22,180 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:22,621 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 22:59:22,621 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:22,644 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:22,648 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:22,659 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:22,659 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:22,665 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:22,666 - INFO - Created 71 features
+2025-07-14 22:59:22,676 - INFO -    1d: 0 @ 0.055
+2025-07-14 22:59:22,676 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:22,676 - INFO - 🔍 Analyzing market sentiment for BTCUSDT
+2025-07-14 22:59:23,409 - INFO -    fear_greed: 0.40
+2025-07-14 22:59:23,440 - INFO -    news: 0.38
+2025-07-14 22:59:23,440 - INFO -    onchain: 0.35
+2025-07-14 22:59:23,440 - INFO -    social: -0.26
+2025-07-14 22:59:23,440 - INFO - 📊 Combined sentiment: 0.31 (conf: 0.57)
+2025-07-14 22:59:23,440 - INFO - 📋 Smart Cache initialized at data/cache
+2025-07-14 22:59:23,440 - INFO - 📊 Portfolio history loaded: 0 past trades
+2025-07-14 22:59:23,440 - INFO - 💼 Portfolio Manager initialized with $10,000.00
+2025-07-14 22:59:23,440 - INFO - 💰 Position size calculated: $651.00
+2025-07-14 22:59:23,440 - INFO -    Kelly: $651, Risk: $8370, Final: $651
+2025-07-14 22:59:23,440 - INFO - 💰 Position size calculated: $651.00
+2025-07-14 22:59:23,440 - INFO -    Kelly: $651, Risk: $8370, Final: $651
+2025-07-14 22:59:23,440 - INFO - 💰 Position size calculated: $651.00
+2025-07-14 22:59:23,440 - INFO -    Kelly: $651, Risk: $8370, Final: $651
+2025-07-14 22:59:23,440 - INFO - 💰 Position size calculated: $651.00
+2025-07-14 22:59:23,440 - INFO -    Kelly: $651, Risk: $8370, Final: $651
+2025-07-14 22:59:23,440 - INFO - ✅ Position opened: BTCUSDT
+2025-07-14 22:59:23,440 - INFO -    Size: $651.00 (Risk: $14.47)
+2025-07-14 22:59:23,440 - INFO -    Remaining capital: $8649.00
+2025-07-14 22:59:23,455 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:59:23,455 - INFO - Features: 66
+2025-07-14 22:59:23,459 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:59:23,459 - INFO - 🎯 Conservative Live Learning System initialized
+2025-07-14 22:59:23,459 - INFO -    Threshold: 0.550 (55% minimum)
+2025-07-14 22:59:23,459 - INFO -    Adaptation: Conservative mode
+2025-07-14 22:59:23,459 - INFO - 🧠 Live learning system initialized!
+2025-07-14 22:59:23,459 - INFO - 🔍 Enhanced analysis for BTCUSDT (MTF: True)
+2025-07-14 22:59:23,459 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 22:59:23,462 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:59:23,462 - INFO - Features: 66
+2025-07-14 22:59:23,462 - INFO - ✅ Models loaded for 4 timeframes
+2025-07-14 22:59:23,462 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 22:59:23,462 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:24,111 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 22:59:24,111 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:24,126 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:24,126 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:24,126 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:24,142 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:24,142 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:24,142 - INFO - Created 71 features
+2025-07-14 22:59:24,156 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:59:24,157 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:24,619 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:59:24,619 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:24,632 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:24,632 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:24,632 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:24,644 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:24,644 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:24,644 - INFO - Created 71 features
+2025-07-14 22:59:24,659 - INFO -    1h: 0 @ 0.047
+2025-07-14 22:59:24,659 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:25,088 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:59:25,088 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:25,095 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:25,102 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:25,107 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:25,113 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:25,113 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:25,113 - INFO - Created 71 features
+2025-07-14 22:59:25,127 - INFO -    4h: 0 @ 0.038
+2025-07-14 22:59:25,127 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:25,536 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 22:59:25,536 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:25,546 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:25,546 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:25,554 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:25,558 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:25,561 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:25,561 - INFO - Created 71 features
+2025-07-14 22:59:25,572 - INFO -    1d: 0 @ 0.055
+2025-07-14 22:59:25,572 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:25,572 - INFO - ⚪ No multi-timeframe signal for BTCUSDT
+2025-07-14 22:59:26,077 - INFO - 🔍 Enhanced analysis for ETHUSDT (MTF: True)
+2025-07-14 22:59:26,078 - INFO - 🔍 Multi-timeframe analysis for ETHUSDT
+2025-07-14 22:59:26,078 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:26,493 - INFO - Successfully fetched 96 candles for ETHUSDT
+2025-07-14 22:59:26,494 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:26,494 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:26,505 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:26,505 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:26,516 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:26,516 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:26,516 - INFO - Created 71 features
+2025-07-14 22:59:26,529 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:59:26,529 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:26,963 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:59:26,963 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:26,994 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:27,000 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:27,003 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:27,008 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:27,008 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:27,010 - INFO - Created 71 features
+2025-07-14 22:59:27,020 - INFO -    1h: 0 @ 0.111
+2025-07-14 22:59:27,020 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:27,394 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:59:27,394 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:27,404 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:27,419 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:27,426 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:27,431 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:27,431 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:27,431 - INFO - Created 71 features
+2025-07-14 22:59:27,443 - INFO -    4h: 0 @ 0.106
+2025-07-14 22:59:27,443 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:27,853 - INFO - Successfully fetched 90 candles for ETHUSDT
+2025-07-14 22:59:27,853 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:27,880 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:27,880 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:27,880 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:27,895 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:27,895 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:27,895 - INFO - Created 71 features
+2025-07-14 22:59:27,910 - INFO -    1d: 0 @ 0.085
+2025-07-14 22:59:27,910 - INFO - ❌ ETHUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:27,910 - INFO - ⚪ No multi-timeframe signal for ETHUSDT
+2025-07-14 22:59:28,415 - INFO - 🔍 Enhanced analysis for BNBUSDT (MTF: True)
+2025-07-14 22:59:28,415 - INFO - 🔍 Multi-timeframe analysis for BNBUSDT
+2025-07-14 22:59:28,415 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:28,851 - INFO - Successfully fetched 96 candles for BNBUSDT
+2025-07-14 22:59:28,851 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:28,852 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:28,861 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:28,871 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:28,876 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:28,879 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:28,880 - INFO - Created 71 features
+2025-07-14 22:59:28,886 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:59:28,890 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:29,254 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:59:29,257 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:29,257 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:29,273 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:29,275 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:29,276 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:29,276 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:29,276 - INFO - Created 71 features
+2025-07-14 22:59:29,291 - INFO -    1h: 0 @ 0.026
+2025-07-14 22:59:29,291 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:29,731 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:59:29,731 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:29,760 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:29,760 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:29,760 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:29,776 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:29,776 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:29,776 - INFO - Created 71 features
+2025-07-14 22:59:29,786 - INFO -    4h: 0 @ 0.136
+2025-07-14 22:59:29,788 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:30,260 - INFO - Successfully fetched 90 candles for BNBUSDT
+2025-07-14 22:59:30,260 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:30,279 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:30,289 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:30,293 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:30,293 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:30,293 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:30,300 - INFO - Created 71 features
+2025-07-14 22:59:30,311 - INFO -    1d: 0 @ 0.023
+2025-07-14 22:59:30,311 - INFO - ❌ BNBUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:30,311 - INFO - ⚪ No multi-timeframe signal for BNBUSDT
+2025-07-14 22:59:30,817 - INFO - 📋 Smart Cache initialized at data/cache
+2025-07-14 22:59:30,829 - INFO - 📊 Portfolio history loaded: 0 past trades
+2025-07-14 22:59:30,829 - INFO - 💼 Portfolio Manager initialized with $20,000.00
+2025-07-14 22:59:30,829 - INFO - 🚀 Enhanced Auto Scanner initialized!
+2025-07-14 22:59:30,829 - INFO - 🔍 Enhanced market scan starting for 3 symbols...
+2025-07-14 22:59:30,829 - INFO - 🔍 Analyzing market sentiment for BTCUSDT
+2025-07-14 22:59:31,519 - INFO -    fear_greed: 0.40
+2025-07-14 22:59:31,519 - INFO -    news: 0.38
+2025-07-14 22:59:31,519 - INFO -    onchain: 0.00
+2025-07-14 22:59:31,519 - INFO -    social: -0.03
+2025-07-14 22:59:31,519 - INFO - 📊 Combined sentiment: 0.15 (conf: 0.57)
+2025-07-14 22:59:31,519 - INFO - 📊 Market Sentiment: 0.15
+2025-07-14 22:59:31,519 - INFO - 🔍 Multi-Timeframe market scan starting for 3 symbols...
+2025-07-14 22:59:31,519 - INFO - 🔍 Enhanced analysis for BTCUSDT (MTF: True)
+2025-07-14 22:59:31,519 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 22:59:31,534 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 22:59:31,538 - INFO - Features: 66
+2025-07-14 22:59:31,538 - INFO - ✅ Models loaded for 4 timeframes
+2025-07-14 22:59:31,540 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 22:59:31,540 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:32,107 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 22:59:32,107 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:32,115 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:32,115 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:32,130 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:32,130 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:32,130 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:32,130 - INFO - Created 71 features
+2025-07-14 22:59:32,148 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:59:32,148 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:32,606 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:59:32,606 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:32,619 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:32,620 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:32,620 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:32,620 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:32,634 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:32,634 - INFO - Created 71 features
+2025-07-14 22:59:32,647 - INFO -    1h: 0 @ 0.047
+2025-07-14 22:59:32,647 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:33,140 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 22:59:33,144 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:33,153 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:33,155 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:33,155 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:33,169 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:33,169 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:33,169 - INFO - Created 71 features
+2025-07-14 22:59:33,185 - INFO -    4h: 0 @ 0.038
+2025-07-14 22:59:33,185 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:33,648 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 22:59:33,648 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:33,658 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:33,658 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:33,658 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:33,677 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:33,678 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:33,679 - INFO - Created 71 features
+2025-07-14 22:59:33,690 - INFO -    1d: 0 @ 0.055
+2025-07-14 22:59:33,691 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:33,692 - INFO - ⚪ No multi-timeframe signal for BTCUSDT
+2025-07-14 22:59:33,844 - INFO - 🔍 Enhanced analysis for ETHUSDT (MTF: True)
+2025-07-14 22:59:33,844 - INFO - 🔍 Multi-timeframe analysis for ETHUSDT
+2025-07-14 22:59:33,844 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:34,259 - INFO - Successfully fetched 96 candles for ETHUSDT
+2025-07-14 22:59:34,259 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:34,269 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:34,278 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:34,278 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:34,288 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:34,289 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:34,290 - INFO - Created 71 features
+2025-07-14 22:59:34,300 - INFO -    15m: 0 @ 0.003
+2025-07-14 22:59:34,301 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:34,751 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:59:34,751 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:34,760 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:34,772 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:34,775 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:34,777 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:34,777 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:34,777 - INFO - Created 71 features
+2025-07-14 22:59:34,793 - INFO -    1h: 0 @ 0.129
+2025-07-14 22:59:34,793 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:35,294 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 22:59:35,294 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:35,307 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:35,307 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:35,318 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:35,322 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:35,322 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:35,322 - INFO - Created 71 features
+2025-07-14 22:59:35,336 - INFO -    4h: 0 @ 0.106
+2025-07-14 22:59:35,336 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:35,743 - INFO - Successfully fetched 90 candles for ETHUSDT
+2025-07-14 22:59:35,743 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:35,753 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:35,759 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:35,759 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:35,765 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:35,769 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:35,769 - INFO - Created 71 features
+2025-07-14 22:59:35,780 - INFO -    1d: 0 @ 0.085
+2025-07-14 22:59:35,780 - INFO - ❌ ETHUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:35,780 - INFO - ⚪ No multi-timeframe signal for ETHUSDT
+2025-07-14 22:59:35,942 - INFO - 🔍 Enhanced analysis for BNBUSDT (MTF: True)
+2025-07-14 22:59:35,942 - INFO - 🔍 Multi-timeframe analysis for BNBUSDT
+2025-07-14 22:59:35,942 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:36,354 - INFO - Successfully fetched 96 candles for BNBUSDT
+2025-07-14 22:59:36,354 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:36,364 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 22:59:36,370 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 22:59:36,378 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 22:59:36,380 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 22:59:36,384 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 22:59:36,385 - INFO - Created 71 features
+2025-07-14 22:59:36,396 - INFO -    15m: 0 @ 0.002
+2025-07-14 22:59:36,396 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:37,038 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:59:37,038 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:37,048 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:37,048 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:37,064 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:37,064 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:37,064 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:37,064 - INFO - Created 71 features
+2025-07-14 22:59:37,082 - INFO -    1h: 0 @ 0.026
+2025-07-14 22:59:37,082 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:37,458 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 22:59:37,458 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:37,458 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 22:59:37,473 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 22:59:37,480 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 22:59:37,480 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 22:59:37,489 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 22:59:37,489 - INFO - Created 71 features
+2025-07-14 22:59:37,500 - INFO -    4h: 0 @ 0.136
+2025-07-14 22:59:37,500 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 22:59:37,893 - INFO - Successfully fetched 90 candles for BNBUSDT
+2025-07-14 22:59:37,893 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 22:59:37,905 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 22:59:37,918 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 22:59:37,918 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 22:59:37,918 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 22:59:37,918 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 22:59:37,918 - INFO - Created 71 features
+2025-07-14 22:59:37,943 - INFO -    1d: 0 @ 0.023
+2025-07-14 22:59:37,943 - INFO - ❌ BNBUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 22:59:37,943 - INFO - ⚪ No multi-timeframe signal for BNBUSDT
+2025-07-14 22:59:38,100 - INFO - ✅ Multi-Timeframe scan completed:
+2025-07-14 22:59:38,100 - INFO -    Successful scans: 3/3
+2025-07-14 22:59:38,100 - INFO -    New signals: 0
+2025-07-14 22:59:38,103 - INFO -    Active signals: 0
+2025-07-14 22:59:38,103 - INFO - ✅ Enhanced scan completed in 7.27s
+2025-07-14 22:59:38,103 - INFO - 📊 Results Summary:
+2025-07-14 22:59:38,103 - INFO -    Signals found: 0
+2025-07-14 22:59:38,103 - INFO -    Positions opened: 0
+2025-07-14 22:59:38,103 - INFO -    Portfolio value: $8,649.00
+2025-07-14 22:59:38,103 - INFO -    Active positions: 0
+2025-07-14 22:59:38,103 - INFO -    Portfolio risk: 0.0%
+2025-07-14 22:59:38,103 - INFO -    Win rate: 0.0%
+2025-07-14 22:59:38,103 - INFO -    Cache hit rate: 0.0%
+2025-07-14 22:59:38,103 - INFO -    Avg request time: 7274.1ms
+2025-07-14 22:59:38,103 - INFO -    Performance gain: No improvement
+2025-07-14 22:59:38,103 - INFO -    Market sentiment: Positive (0.15)
+2025-07-14 22:59:40,125 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-14 22:59:42,146 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-14 22:59:42,161 - INFO - Test email sent successfully
+2025-07-14 23:02:54,405 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:55,003 - INFO - Successfully fetched 100 candles for BTCUSDT
+2025-07-14 23:02:55,010 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:55,018 - INFO - Successfully calculated technical indicators for 100 rows
+2025-07-14 23:02:55,018 - INFO - Successfully calculated price features for 100 rows
+2025-07-14 23:02:55,033 - INFO - Successfully calculated trend features for 100 rows
+2025-07-14 23:02:55,033 - INFO - Successfully calculated pattern features for 100 rows
+2025-07-14 23:02:55,033 - INFO - Feature engineering for prediction completed: 100 -> 100 rows
+2025-07-14 23:02:55,033 - INFO - Created 71 features
+2025-07-14 23:02:55,064 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 23:02:55,064 - INFO - Features: 66
+2025-07-14 23:02:55,079 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 23:02:55,081 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 23:02:55,081 - INFO - Features: 66
+2025-07-14 23:02:55,081 - INFO - ✅ Models successfully loaded for 4 timeframes
+2025-07-14 23:02:55,084 - INFO -    Model version: v20250714_224248
+2025-07-14 23:02:55,084 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 23:02:55,084 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:55,707 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 23:02:55,707 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:55,716 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:02:55,722 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:02:55,722 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:02:55,733 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:02:55,733 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:02:55,733 - INFO - Created 71 features
+2025-07-14 23:02:55,746 - INFO -    ✓ 15m: prediction=0, confidence=0.007
+2025-07-14 23:02:55,746 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:56,213 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 23:02:56,213 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:56,213 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:02:56,224 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:02:56,224 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:02:56,236 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:02:56,240 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:02:56,240 - INFO - Created 71 features
+2025-07-14 23:02:56,249 - INFO -    ✓ 1h: prediction=0, confidence=0.023
+2025-07-14 23:02:56,249 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:56,608 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 23:02:56,608 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:56,621 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:02:56,621 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:02:56,621 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:02:56,635 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:02:56,636 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:02:56,637 - INFO - Created 71 features
+2025-07-14 23:02:56,645 - INFO -    ✓ 4h: prediction=0, confidence=0.020
+2025-07-14 23:02:56,645 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:57,049 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 23:02:57,049 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:57,063 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:02:57,077 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:02:57,077 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:02:57,077 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:02:57,077 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:02:57,077 - INFO - Created 71 features
+2025-07-14 23:02:57,100 - INFO -    ✓ 1d: prediction=0, confidence=0.069
+2025-07-14 23:02:57,102 - INFO - 📊 BTCUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:02:57,102 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:02:57,102 - INFO - ❌ No combined signal for BTCUSDT
+2025-07-14 23:02:57,102 - INFO - 🔍 Analyzing market sentiment for BTCUSDT
+2025-07-14 23:02:57,813 - INFO -    fear_greed: 0.40
+2025-07-14 23:02:57,828 - INFO -    news: 0.38
+2025-07-14 23:02:57,828 - INFO -    onchain: 0.30
+2025-07-14 23:02:57,828 - INFO -    social: -0.42
+2025-07-14 23:02:57,828 - INFO - 📊 Combined sentiment: 0.27 (conf: 0.57)
+2025-07-14 23:02:57,828 - INFO - 📋 Smart Cache initialized at data/cache
+2025-07-14 23:02:57,828 - INFO - 📊 Portfolio history loaded: 0 past trades
+2025-07-14 23:02:57,828 - INFO - 💼 Portfolio Manager initialized with $10,000.00
+2025-07-14 23:02:57,828 - INFO - 💰 Position size calculated: $605.43
+2025-07-14 23:02:57,828 - INFO -    Kelly: $605, Risk: $7784, Final: $605
+2025-07-14 23:02:57,828 - INFO - 💰 Position size calculated: $605.43
+2025-07-14 23:02:57,828 - INFO -    Kelly: $605, Risk: $7784, Final: $605
+2025-07-14 23:02:57,828 - INFO - 💰 Position size calculated: $605.43
+2025-07-14 23:02:57,828 - INFO -    Kelly: $605, Risk: $7784, Final: $605
+2025-07-14 23:02:57,828 - INFO - 💰 Position size calculated: $605.43
+2025-07-14 23:02:57,828 - INFO -    Kelly: $605, Risk: $7784, Final: $605
+2025-07-14 23:02:57,843 - INFO - ✅ Position opened: BTCUSDT
+2025-07-14 23:02:57,843 - INFO -    Size: $605.43 (Risk: $13.45)
+2025-07-14 23:02:57,843 - INFO -    Remaining capital: $8043.57
+2025-07-14 23:02:57,846 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 23:02:57,846 - INFO - Features: 66
+2025-07-14 23:02:57,846 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 23:02:57,850 - INFO - 🎯 Conservative Live Learning System initialized
+2025-07-14 23:02:57,850 - INFO -    Threshold: 0.550 (55% minimum)
+2025-07-14 23:02:57,850 - INFO -    Adaptation: Conservative mode
+2025-07-14 23:02:57,850 - INFO - 🧠 Live learning system initialized!
+2025-07-14 23:02:57,850 - INFO - 🔍 Enhanced analysis for BTCUSDT (MTF: True)
+2025-07-14 23:02:57,850 - INFO - 🔄 Models not loaded, loading now for BTCUSDT...
+2025-07-14 23:02:57,850 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 23:02:57,854 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 23:02:57,854 - INFO - Features: 66
+2025-07-14 23:02:57,854 - INFO - ✅ Models successfully loaded for 4 timeframes
+2025-07-14 23:02:57,854 - INFO -    Model version: v20250714_224248
+2025-07-14 23:02:57,854 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 23:02:57,854 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:58,703 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 23:02:58,703 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:58,713 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:02:58,719 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:02:58,722 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:02:58,724 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:02:58,724 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:02:58,724 - INFO - Created 71 features
+2025-07-14 23:02:58,740 - INFO -    ✓ 15m: prediction=0, confidence=0.007
+2025-07-14 23:02:58,740 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:59,135 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 23:02:59,135 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:59,145 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:02:59,145 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:02:59,160 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:02:59,160 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:02:59,160 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:02:59,160 - INFO - Created 71 features
+2025-07-14 23:02:59,177 - INFO -    ✓ 1h: prediction=0, confidence=0.015
+2025-07-14 23:02:59,177 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:02:59,604 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 23:02:59,604 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:02:59,604 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:02:59,623 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:02:59,623 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:02:59,623 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:02:59,623 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:02:59,623 - INFO - Created 71 features
+2025-07-14 23:02:59,643 - INFO -    ✓ 4h: prediction=0, confidence=0.020
+2025-07-14 23:02:59,643 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:00,071 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 23:03:00,071 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:00,078 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:03:00,078 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:03:00,093 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:03:00,093 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:03:00,093 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:03:00,093 - INFO - Created 71 features
+2025-07-14 23:03:00,108 - INFO -    ✓ 1d: prediction=0, confidence=0.069
+2025-07-14 23:03:00,108 - INFO - 📊 BTCUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:03:00,108 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:03:00,108 - INFO - ❌ No combined signal for BTCUSDT
+2025-07-14 23:03:00,108 - INFO - ⚪ No multi-timeframe signal for BTCUSDT
+2025-07-14 23:03:00,612 - INFO - 🔍 Enhanced analysis for ETHUSDT (MTF: True)
+2025-07-14 23:03:00,612 - INFO - 🔍 Multi-timeframe analysis for ETHUSDT
+2025-07-14 23:03:00,612 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:01,021 - INFO - Successfully fetched 96 candles for ETHUSDT
+2025-07-14 23:03:01,021 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:01,043 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:03:01,043 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:03:01,043 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:03:01,058 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:03:01,058 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:03:01,058 - INFO - Created 71 features
+2025-07-14 23:03:01,071 - INFO -    ✓ 15m: prediction=0, confidence=0.002
+2025-07-14 23:03:01,071 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:01,517 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 23:03:01,517 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:01,525 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:01,532 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:01,534 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:01,539 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:01,539 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:01,539 - INFO - Created 71 features
+2025-07-14 23:03:01,553 - INFO -    ✓ 1h: prediction=0, confidence=0.145
+2025-07-14 23:03:01,553 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:02,051 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 23:03:02,053 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:02,053 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:02,065 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:02,065 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:02,065 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:02,065 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:02,065 - INFO - Created 71 features
+2025-07-14 23:03:02,088 - INFO -    ✓ 4h: prediction=0, confidence=0.097
+2025-07-14 23:03:02,088 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:02,551 - INFO - Successfully fetched 90 candles for ETHUSDT
+2025-07-14 23:03:02,551 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:02,571 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:03:02,580 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:03:02,582 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:03:02,582 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:03:02,582 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:03:02,582 - INFO - Created 71 features
+2025-07-14 23:03:02,601 - INFO -    ✓ 1d: prediction=0, confidence=0.072
+2025-07-14 23:03:02,601 - INFO - 📊 ETHUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:03:02,601 - INFO - ❌ ETHUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:03:02,601 - INFO - ❌ No combined signal for ETHUSDT
+2025-07-14 23:03:02,601 - INFO - ⚪ No multi-timeframe signal for ETHUSDT
+2025-07-14 23:03:03,115 - INFO - 🔍 Enhanced analysis for BNBUSDT (MTF: True)
+2025-07-14 23:03:03,117 - INFO - 🔍 Multi-timeframe analysis for BNBUSDT
+2025-07-14 23:03:03,117 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:03,561 - INFO - Successfully fetched 96 candles for BNBUSDT
+2025-07-14 23:03:03,561 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:03,576 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:03:03,576 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:03:03,583 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:03:03,591 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:03:03,591 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:03:03,592 - INFO - Created 71 features
+2025-07-14 23:03:03,602 - INFO -    ✓ 15m: prediction=0, confidence=0.002
+2025-07-14 23:03:03,602 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:04,049 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 23:03:04,049 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:04,067 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:04,079 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:04,079 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:04,079 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:04,079 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:04,079 - INFO - Created 71 features
+2025-07-14 23:03:04,099 - INFO -    ✓ 1h: prediction=0, confidence=0.056
+2025-07-14 23:03:04,099 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:04,562 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 23:03:04,562 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:04,577 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:04,592 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:04,594 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:04,601 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:04,601 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:04,601 - INFO - Created 71 features
+2025-07-14 23:03:04,612 - INFO -    ✓ 4h: prediction=0, confidence=0.139
+2025-07-14 23:03:04,612 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:05,007 - INFO - Successfully fetched 90 candles for BNBUSDT
+2025-07-14 23:03:05,007 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:05,017 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:03:05,023 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:03:05,024 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:03:05,030 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:03:05,030 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:03:05,030 - INFO - Created 71 features
+2025-07-14 23:03:05,041 - INFO -    ✓ 1d: prediction=0, confidence=0.023
+2025-07-14 23:03:05,041 - INFO - 📊 BNBUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:03:05,041 - INFO - ❌ BNBUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:03:05,041 - INFO - ❌ No combined signal for BNBUSDT
+2025-07-14 23:03:05,041 - INFO - ⚪ No multi-timeframe signal for BNBUSDT
+2025-07-14 23:03:05,556 - INFO - 📋 Smart Cache initialized at data/cache
+2025-07-14 23:03:05,569 - INFO - 📊 Portfolio history loaded: 0 past trades
+2025-07-14 23:03:05,569 - INFO - 💼 Portfolio Manager initialized with $20,000.00
+2025-07-14 23:03:05,569 - INFO - 🚀 Enhanced Auto Scanner initialized!
+2025-07-14 23:03:05,569 - INFO - 🔍 Enhanced market scan starting for 3 symbols...
+2025-07-14 23:03:05,569 - INFO - 🔍 Analyzing market sentiment for BTCUSDT
+2025-07-14 23:03:06,228 - INFO -    fear_greed: 0.40
+2025-07-14 23:03:06,228 - INFO -    news: 0.38
+2025-07-14 23:03:06,228 - INFO -    onchain: 0.30
+2025-07-14 23:03:06,244 - INFO -    social: -0.42
+2025-07-14 23:03:06,244 - INFO - 📊 Combined sentiment: 0.27 (conf: 0.57)
+2025-07-14 23:03:06,244 - INFO - 📊 Market Sentiment: 0.27
+2025-07-14 23:03:06,247 - INFO - 🔍 Multi-Timeframe market scan starting for 3 symbols...
+2025-07-14 23:03:06,247 - INFO - 🔍 Enhanced analysis for BTCUSDT (MTF: True)
+2025-07-14 23:03:06,247 - INFO - 🔄 Models not loaded, loading now for BTCUSDT...
+2025-07-14 23:03:06,247 - INFO - 🔄 Loading models for each timeframe...
+2025-07-14 23:03:06,261 - INFO - Model loaded successfully: v20250714_224248
+2025-07-14 23:03:06,262 - INFO - Features: 66
+2025-07-14 23:03:06,262 - INFO - ✅ Models successfully loaded for 4 timeframes
+2025-07-14 23:03:06,264 - INFO -    Model version: v20250714_224248
+2025-07-14 23:03:06,264 - INFO - 🔍 Multi-timeframe analysis for BTCUSDT
+2025-07-14 23:03:06,266 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:06,900 - INFO - Successfully fetched 96 candles for BTCUSDT
+2025-07-14 23:03:06,900 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:06,916 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:03:06,931 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:03:06,931 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:03:06,931 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:03:06,946 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:03:06,946 - INFO - Created 71 features
+2025-07-14 23:03:06,956 - INFO -    ✓ 15m: prediction=0, confidence=0.003
+2025-07-14 23:03:06,958 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:07,374 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 23:03:07,374 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:07,386 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:07,386 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:07,386 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:07,402 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:07,402 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:07,402 - INFO - Created 71 features
+2025-07-14 23:03:07,416 - INFO -    ✓ 1h: prediction=0, confidence=0.039
+2025-07-14 23:03:07,417 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:07,900 - INFO - Successfully fetched 168 candles for BTCUSDT
+2025-07-14 23:03:07,905 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:07,921 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:07,921 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:07,921 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:07,936 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:07,938 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:07,938 - INFO - Created 71 features
+2025-07-14 23:03:07,949 - INFO -    ✓ 4h: prediction=0, confidence=0.023
+2025-07-14 23:03:07,949 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:08,350 - INFO - Successfully fetched 90 candles for BTCUSDT
+2025-07-14 23:03:08,352 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:08,366 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:03:08,366 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:03:08,366 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:03:08,380 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:03:08,380 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:03:08,380 - INFO - Created 71 features
+2025-07-14 23:03:08,391 - INFO -    ✓ 1d: prediction=0, confidence=0.069
+2025-07-14 23:03:08,393 - INFO - 📊 BTCUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:03:08,393 - INFO - ❌ BTCUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:03:08,393 - INFO - ❌ No combined signal for BTCUSDT
+2025-07-14 23:03:08,393 - INFO - ⚪ No multi-timeframe signal for BTCUSDT
+2025-07-14 23:03:08,546 - INFO - 🔍 Enhanced analysis for ETHUSDT (MTF: True)
+2025-07-14 23:03:08,546 - INFO - 🔍 Multi-timeframe analysis for ETHUSDT
+2025-07-14 23:03:08,549 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:09,021 - INFO - Successfully fetched 96 candles for ETHUSDT
+2025-07-14 23:03:09,021 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:09,025 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:03:09,039 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:03:09,041 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:03:09,041 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:03:09,041 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:03:09,041 - INFO - Created 71 features
+2025-07-14 23:03:09,060 - INFO -    ✓ 15m: prediction=0, confidence=0.001
+2025-07-14 23:03:09,060 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:09,694 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 23:03:09,703 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:09,708 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:09,723 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:09,723 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:09,723 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:09,723 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:09,723 - INFO - Created 71 features
+2025-07-14 23:03:09,746 - INFO -    ✓ 1h: prediction=0, confidence=0.155
+2025-07-14 23:03:09,746 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:10,213 - INFO - Successfully fetched 168 candles for ETHUSDT
+2025-07-14 23:03:10,213 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:10,228 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:10,228 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:10,228 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:10,244 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:10,244 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:10,247 - INFO - Created 71 features
+2025-07-14 23:03:10,258 - INFO -    ✓ 4h: prediction=0, confidence=0.097
+2025-07-14 23:03:10,258 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:10,708 - INFO - Successfully fetched 90 candles for ETHUSDT
+2025-07-14 23:03:10,708 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:10,723 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:03:10,730 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:03:10,733 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:03:10,739 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:03:10,739 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:03:10,741 - INFO - Created 71 features
+2025-07-14 23:03:10,748 - INFO -    ✓ 1d: prediction=0, confidence=0.085
+2025-07-14 23:03:10,751 - INFO - 📊 ETHUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:03:10,751 - INFO - ❌ ETHUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:03:10,751 - INFO - ❌ No combined signal for ETHUSDT
+2025-07-14 23:03:10,751 - INFO - ⚪ No multi-timeframe signal for ETHUSDT
+2025-07-14 23:03:10,916 - INFO - 🔍 Enhanced analysis for BNBUSDT (MTF: True)
+2025-07-14 23:03:10,916 - INFO - 🔍 Multi-timeframe analysis for BNBUSDT
+2025-07-14 23:03:10,916 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:11,367 - INFO - Successfully fetched 96 candles for BNBUSDT
+2025-07-14 23:03:11,367 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:11,376 - INFO - Successfully calculated technical indicators for 96 rows
+2025-07-14 23:03:11,376 - INFO - Successfully calculated price features for 96 rows
+2025-07-14 23:03:11,388 - INFO - Successfully calculated trend features for 96 rows
+2025-07-14 23:03:11,391 - INFO - Successfully calculated pattern features for 96 rows
+2025-07-14 23:03:11,391 - INFO - Feature engineering for prediction completed: 96 -> 96 rows
+2025-07-14 23:03:11,391 - INFO - Created 71 features
+2025-07-14 23:03:11,406 - INFO -    ✓ 15m: prediction=0, confidence=0.002
+2025-07-14 23:03:11,406 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:11,835 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 23:03:11,835 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:11,835 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:11,853 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:11,857 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:11,857 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:11,857 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:11,865 - INFO - Created 71 features
+2025-07-14 23:03:11,876 - INFO -    ✓ 1h: prediction=0, confidence=0.056
+2025-07-14 23:03:11,876 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:12,372 - INFO - Successfully fetched 168 candles for BNBUSDT
+2025-07-14 23:03:12,372 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:12,372 - INFO - Successfully calculated technical indicators for 168 rows
+2025-07-14 23:03:12,385 - INFO - Successfully calculated price features for 168 rows
+2025-07-14 23:03:12,385 - INFO - Successfully calculated trend features for 168 rows
+2025-07-14 23:03:12,385 - INFO - Successfully calculated pattern features for 168 rows
+2025-07-14 23:03:12,385 - INFO - Feature engineering for prediction completed: 168 -> 168 rows
+2025-07-14 23:03:12,385 - INFO - Created 71 features
+2025-07-14 23:03:12,410 - INFO -    ✓ 4h: prediction=0, confidence=0.139
+2025-07-14 23:03:12,410 - INFO - Making request to https://api.binance.com/api/v3/klines (attempt 1/3)
+2025-07-14 23:03:12,813 - INFO - Successfully fetched 90 candles for BNBUSDT
+2025-07-14 23:03:12,813 - INFO - Starting feature engineering pipeline for prediction...
+2025-07-14 23:03:12,844 - INFO - Successfully calculated technical indicators for 90 rows
+2025-07-14 23:03:12,852 - INFO - Successfully calculated price features for 90 rows
+2025-07-14 23:03:12,854 - INFO - Successfully calculated trend features for 90 rows
+2025-07-14 23:03:12,861 - INFO - Successfully calculated pattern features for 90 rows
+2025-07-14 23:03:12,861 - INFO - Feature engineering for prediction completed: 90 -> 90 rows
+2025-07-14 23:03:12,863 - INFO - Created 71 features
+2025-07-14 23:03:12,873 - INFO -    ✓ 1d: prediction=0, confidence=0.025
+2025-07-14 23:03:12,873 - INFO - 📊 BNBUSDT: 4/4 timeframes analyzed successfully
+2025-07-14 23:03:12,875 - INFO - ❌ BNBUSDT: Only 0 timeframes agreed (need 2)
+2025-07-14 23:03:12,875 - INFO - ❌ No combined signal for BNBUSDT
+2025-07-14 23:03:12,875 - INFO - ⚪ No multi-timeframe signal for BNBUSDT
+2025-07-14 23:03:13,025 - INFO - ✅ Multi-Timeframe scan completed:
+2025-07-14 23:03:13,025 - INFO -    Successful scans: 3/3
+2025-07-14 23:03:13,025 - INFO -    New signals: 0
+2025-07-14 23:03:13,025 - INFO -    Active signals: 0
+2025-07-14 23:03:13,025 - INFO - ✅ Enhanced scan completed in 7.46s
+2025-07-14 23:03:13,030 - INFO - 📊 Results Summary:
+2025-07-14 23:03:13,030 - INFO -    Signals found: 0
+2025-07-14 23:03:13,030 - INFO -    Positions opened: 0
+2025-07-14 23:03:13,030 - INFO -    Portfolio value: $8,043.57
+2025-07-14 23:03:13,030 - INFO -    Active positions: 0
+2025-07-14 23:03:13,030 - INFO -    Portfolio risk: 0.0%
+2025-07-14 23:03:13,030 - INFO -    Win rate: 0.0%
+2025-07-14 23:03:13,030 - INFO -    Cache hit rate: 0.0%
+2025-07-14 23:03:13,037 - INFO -    Avg request time: 7456.6ms
+2025-07-14 23:03:13,037 - INFO -    Performance gain: No improvement
+2025-07-14 23:03:13,037 - INFO -    Market sentiment: Positive (0.27)
+2025-07-14 23:03:15,247 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-14 23:03:17,426 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-07-14 23:03:17,426 - INFO - Test email sent successfully
