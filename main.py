@@ -945,7 +945,7 @@ Generated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
                     
                     alert_message += "Immediate attention required. Consider reducing positions or stopping trading."
                     
-                    self.email_sender.send_system_alert('WARNING', alert_message)
+                    """self.email_sender.send_system_alert('WARNING', alert_message)"""
                     logger.warning(f"🚨 High severity risk alerts sent via email")
             
         except Exception as e:
