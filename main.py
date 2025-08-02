@@ -316,7 +316,10 @@ class AutomatedScanner:
     def process_signal(self, signal) -> None:
         """پردازش سیگنال جدید"""
         try:
-            logger.info(f"📈 Processing signal: {signal.symbol} @ {signal.confidence:.3f}")
+            signal_emoji = "📈" if signal.signal_type == 'BUY' else "📉"
+            direction = "LONG" if signal.signal_type == 'BUY' else "SHORT"
+            
+            logger.info(f"{signal_emoji} Processing {direction} signal: {signal.symbol} @ {signal.confidence:.3f}")
             
             if self.email_sender:
                 success = self.email_sender.send_signal_email(signal.to_dict())
@@ -325,17 +328,17 @@ class AutomatedScanner:
                 else:
                     logger.error(f"❌ Failed to send email for {signal.symbol}")
             
-            logger.info(f"🎯 Signal Details:")
+            logger.info(f"🎯 {direction} Signal Details:")
             logger.info(f"   Symbol: {signal.symbol}")
-            logger.info(f"   Entry: ${signal.entry_price:.2f}")
-            logger.info(f"   Target: ${signal.target_price:.2f} (+{signal.get_profit_potential()*100:.2f}%)")
-            logger.info(f"   Stop: ${signal.stop_loss:.2f}")
+            logger.info(f"   Entry: ${signal.entry_price:.6f}")
+            logger.info(f"   Target: ${signal.target_price:.6f} ({signal.get_profit_potential()*100:+.3f}%)")
+            logger.info(f"   Stop: ${signal.stop_loss:.6f}")
             logger.info(f"   Confidence: {signal.confidence:.3f}")
             logger.info(f"   Risk/Reward: {signal.get_risk_ratio():.2f}")
             
         except Exception as e:
             logger.error(f"❌ Error processing signal: {str(e)}")
-    
+
     def log_scan_stats(self, signals_found: int, scan_time: float) -> None:
         """لاگ آمار اسکن"""
         try:
@@ -383,14 +386,16 @@ class AutomatedScanner:
             if signals:
                 logger.info(f"🚨 {len(signals)} signals generated!")
                 for signal in signals:
-                    logger.info(f"   📈 {signal['symbol']}: {signal['confidence']*100:.1f}% confidence")
+                    signal_emoji = "📈" if signal['signal_type'] == 'BUY' else "📉"
+                    direction = "LONG" if signal['signal_type'] == 'BUY' else "SHORT"
+                    logger.info(f"   {signal_emoji} {signal['symbol']}: {direction} {signal['confidence']*100:.1f}% confidence")
             else:
                 logger.info("⚪ No signals found in current scan")
             
         except Exception as e:
             logger.error(f"❌ Error in scanning cycle: {str(e)}")
             self.send_system_alert('ERROR', f"Scanner error: {str(e)}")
-    
+            
     def run_continuous(self) -> None:
         """اجرای مداوم اسکنر"""
         try:

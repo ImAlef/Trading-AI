@@ -137,24 +137,36 @@ class EmailSender:
     
     def _create_signal_email_body(self, signal_data: Dict) -> str:
         """
-        Create HTML email body for trading signal
+        Create HTML email body for trading signal with support for LONG and SHORT
         """
-        # Calculate profit/loss percentages
-        profit_pct = ((signal_data['target_price'] - signal_data['entry_price']) / signal_data['entry_price']) * 100
-        loss_pct = ((signal_data['entry_price'] - signal_data['stop_loss']) / signal_data['entry_price']) * 100
+        # Calculate profit/loss percentages based on signal type
+        if signal_data['signal_type'] == 'BUY':
+            profit_pct = ((signal_data['target_price'] - signal_data['entry_price']) / signal_data['entry_price']) * 100
+            loss_pct = ((signal_data['entry_price'] - signal_data['stop_loss']) / signal_data['entry_price']) * 100
+            signal_emoji = "📈"
+            signal_color = "#2E7D32"  # Green
+            direction = "LONG"
+        else:  # SELL (SHORT)
+            profit_pct = ((signal_data['entry_price'] - signal_data['target_price']) / signal_data['entry_price']) * 100
+            loss_pct = ((signal_data['stop_loss'] - signal_data['entry_price']) / signal_data['entry_price']) * 100
+            signal_emoji = "📉"
+            signal_color = "#D32F2F"  # Red
+            direction = "SHORT"
+        
+        risk_reward_ratio = profit_pct / loss_pct if loss_pct > 0 else 0
         
         # Format timestamps
         created_time = datetime.fromisoformat(signal_data['created_at']).strftime('%Y-%m-%d %H:%M:%S')
         expires_time = datetime.fromisoformat(signal_data['expires_at']).strftime('%Y-%m-%d %H:%M:%S')
         
-        # Create email body
+        # Create email body with high precision pricing and SHORT support
         body = f"""
         <html>
         <head>
             <style>
                 body {{ font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }}
                 .container {{ max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }}
-                .header {{ text-align: center; background-color: #2E7D32; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }}
+                .header {{ text-align: center; background-color: {signal_color}; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }}
                 .signal-info {{ background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
                 .price-info {{ display: flex; justify-content: space-between; margin-bottom: 15px; }}
                 .price-box {{ text-align: center; padding: 10px; border-radius: 5px; flex: 1; margin: 0 5px; }}
@@ -164,65 +176,72 @@ class EmailSender:
                 .technical {{ background-color: #f3e5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; }}
                 .footer {{ text-align: center; color: #666; font-size: 12px; margin-top: 20px; }}
                 .warning {{ background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 5px; margin-top: 20px; }}
+                .precision {{ font-family: 'Courier New', monospace; font-weight: bold; }}
+                .direction-badge {{ display: inline-block; padding: 5px 15px; border-radius: 20px; color: white; background-color: {signal_color}; font-weight: bold; }}
             </style>
         </head>
         <body>
             <div class="container">
                 <div class="header">
-                    <h1>🚀 CRYPTO TRADING SIGNAL</h1>
+                    <h1>{signal_emoji} CRYPTO TRADING SIGNAL</h1>
                     <h2>{signal_data['symbol']}</h2>
+                    <span class="direction-badge">{direction}</span>
                     <p>Confidence: {signal_data['confidence']*100:.1f}%</p>
                 </div>
                 
                 <div class="signal-info">
                     <h3>📊 Signal Details</h3>
-                    <p><strong>Action:</strong> {signal_data['signal_type']}</p>
+                    <p><strong>Action:</strong> {signal_data['signal_type']} ({direction})</p>
                     <p><strong>Timeframe:</strong> {signal_data['timeframe']}</p>
                     <p><strong>Created:</strong> {created_time}</p>
                     <p><strong>Expires:</strong> {expires_time}</p>
+                    <p><strong>Risk/Reward:</strong> <span class="precision">1:{risk_reward_ratio:.2f}</span></p>
                 </div>
                 
                 <div class="price-info">
                     <div class="price-box entry">
                         <h4>🎯 Entry Price</h4>
-                        <p><strong>${signal_data['entry_price']:,.2f}</strong></p>
+                        <p class="precision"><strong>${signal_data['entry_price']:.6f}</strong></p>
                     </div>
                     <div class="price-box target">
-                        <h4>📈 Target Price</h4>
-                        <p><strong>${signal_data['target_price']:,.2f}</strong></p>
-                        <p style="color: green;">+{profit_pct:.2f}%</p>
+                        <h4>{'📈' if signal_data['signal_type'] == 'BUY' else '📉'} Target Price</h4>
+                        <p class="precision"><strong>${signal_data['target_price']:.6f}</strong></p>
+                        <p style="color: green;">+{profit_pct:.3f}%</p>
                     </div>
                     <div class="price-box stop">
                         <h4>🛑 Stop Loss</h4>
-                        <p><strong>${signal_data['stop_loss']:,.2f}</strong></p>
-                        <p style="color: red;">-{loss_pct:.2f}%</p>
+                        <p class="precision"><strong>${signal_data['stop_loss']:.6f}</strong></p>
+                        <p style="color: red;">-{loss_pct:.3f}%</p>
                     </div>
                 </div>
                 
                 <div class="technical">
                     <h3>🔍 Technical Analysis</h3>
-                    <p><strong>RSI:</strong> {signal_data['rsi']:.1f}</p>
-                    <p><strong>MACD:</strong> {signal_data['macd']:.4f}</p>
-                    <p><strong>MACD Signal:</strong> {signal_data['macd_signal']:.4f}</p>
-                    <p><strong>Bollinger Upper:</strong> ${signal_data['bb_upper']:,.2f}</p>
-                    <p><strong>Bollinger Lower:</strong> ${signal_data['bb_lower']:,.2f}</p>
-                    <p><strong>Volume Ratio:</strong> {signal_data['volume_ratio']:.2f}</p>
+                    <p><strong>RSI:</strong> {signal_data['rsi']:.2f} {'(Oversold)' if signal_data['rsi'] < 30 else '(Overbought)' if signal_data['rsi'] > 70 else '(Neutral)'}</p>
+                    <p><strong>MACD:</strong> {signal_data['macd']:.6f}</p>
+                    <p><strong>MACD Signal:</strong> {signal_data['macd_signal']:.6f}</p>
+                    <p><strong>MACD Trend:</strong> {'Bullish' if signal_data['macd'] > signal_data['macd_signal'] else 'Bearish'}</p>
+                    <p><strong>Bollinger Upper:</strong> <span class="precision">${signal_data['bb_upper']:.6f}</span></p>
+                    <p><strong>Bollinger Lower:</strong> <span class="precision">${signal_data['bb_lower']:.6f}</span></p>
+                    <p><strong>Volume Ratio:</strong> {signal_data['volume_ratio']:.3f} {'(High Volume)' if signal_data['volume_ratio'] > 1.5 else '(Normal Volume)'}</p>
                 </div>
                 
                 <div class="warning">
                     <h4>⚠️ Risk Warning</h4>
-                    <p>This is an automated signal based on technical analysis. Please:</p>
+                    <p>This is an automated {direction} signal based on technical analysis. Please:</p>
                     <ul>
                         <li>Do your own research before trading</li>
                         <li>Only invest what you can afford to lose</li>
                         <li>Use proper risk management</li>
                         <li>Consider market conditions</li>
+                        <li>{'Be aware that SHORT positions have unlimited risk potential' if signal_data['signal_type'] == 'SELL' else 'Monitor your position closely'}</li>
                     </ul>
                 </div>
                 
                 <div class="footer">
                     <p>Generated by Crypto Signal Bot v{signal_data['model_version']}</p>
                     <p>Model used {signal_data['features_used']} features for prediction</p>
+                    <p>Signal Type: {direction} | Confidence: {signal_data['confidence']*100:.1f}%</p>
                     <p>This email was sent automatically. Do not reply.</p>
                 </div>
             </div>
@@ -234,29 +253,42 @@ class EmailSender:
     
     def _create_summary_email_body(self, signals: List[Dict], summary_data: Dict) -> str:
         """
-        Create HTML email body for daily summary
+        Create HTML email body for daily summary with LONG/SHORT support
         """
         date_str = datetime.now().strftime('%Y-%m-%d')
+        
+        # Count LONG vs SHORT signals
+        long_signals = [s for s in signals if s['signal_type'] == 'BUY']
+        short_signals = [s for s in signals if s['signal_type'] == 'SELL']
         
         # Create signals table
         signals_html = ""
         if signals:
             for signal in signals:
-                profit_pct = ((signal['target_price'] - signal['entry_price']) / signal['entry_price']) * 100
+                if signal['signal_type'] == 'BUY':
+                    profit_pct = ((signal['target_price'] - signal['entry_price']) / signal['entry_price']) * 100
+                    signal_emoji = "📈"
+                    direction = "LONG"
+                else:  # SELL (SHORT)
+                    profit_pct = ((signal['entry_price'] - signal['target_price']) / signal['entry_price']) * 100
+                    signal_emoji = "📉"
+                    direction = "SHORT"
+                
                 created_time = datetime.fromisoformat(signal['created_at']).strftime('%H:%M')
                 
                 signals_html += f"""
                 <tr>
-                    <td>{signal['symbol']}</td>
+                    <td>{signal_emoji} {signal['symbol']}</td>
+                    <td>{direction}</td>
                     <td>{signal['confidence']*100:.1f}%</td>
-                    <td>${signal['entry_price']:,.2f}</td>
-                    <td>${signal['target_price']:,.2f}</td>
+                    <td>${signal['entry_price']:.6f}</td>
+                    <td>${signal['target_price']:.6f}</td>
                     <td style="color: green;">+{profit_pct:.2f}%</td>
                     <td>{created_time}</td>
                 </tr>
                 """
         else:
-            signals_html = '<tr><td colspan="6" style="text-align: center;">No signals generated today</td></tr>'
+            signals_html = '<tr><td colspan="7" style="text-align: center;">No signals generated today</td></tr>'
         
         body = f"""
         <html>
@@ -267,6 +299,8 @@ class EmailSender:
                 .header {{ text-align: center; background-color: #1976D2; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }}
                 .stats {{ display: flex; justify-content: space-around; margin-bottom: 20px; }}
                 .stat-box {{ text-align: center; padding: 15px; background-color: #f8f9fa; border-radius: 8px; }}
+                .long-box {{ border-left: 4px solid #2E7D32; }}
+                .short-box {{ border-left: 4px solid #D32F2F; }}
                 table {{ width: 100%; border-collapse: collapse; margin-bottom: 20px; }}
                 th, td {{ padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }}
                 th {{ background-color: #f8f9fa; }}
@@ -283,7 +317,15 @@ class EmailSender:
                 <div class="stats">
                     <div class="stat-box">
                         <h3>{len(signals)}</h3>
-                        <p>Signals Generated</p>
+                        <p>Total Signals</p>
+                    </div>
+                    <div class="stat-box long-box">
+                        <h3>📈 {len(long_signals)}</h3>
+                        <p>LONG Signals</p>
+                    </div>
+                    <div class="stat-box short-box">
+                        <h3>📉 {len(short_signals)}</h3>
+                        <p>SHORT Signals</p>
                     </div>
                     <div class="stat-box">
                         <h3>{summary_data.get('pairs_scanned', 0)}</h3>
@@ -299,11 +341,12 @@ class EmailSender:
                     </div>
                 </div>
                 
-                <h3>📈 Today's Signals</h3>
+                <h3>📈📉 Today's Signals</h3>
                 <table>
                     <thead>
                         <tr>
                             <th>Symbol</th>
+                            <th>Direction</th>
                             <th>Confidence</th>
                             <th>Entry Price</th>
                             <th>Target Price</th>
@@ -318,6 +361,7 @@ class EmailSender:
                 
                 <div class="footer">
                     <p>Generated by Crypto Signal Bot</p>
+                    <p>LONG Signals: {len(long_signals)} | SHORT Signals: {len(short_signals)} | Total: {len(signals)}</p>
                     <p>This email was sent automatically. Do not reply.</p>
                 </div>
             </div>

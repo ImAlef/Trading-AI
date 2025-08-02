@@ -62,14 +62,40 @@ class TradingSignal:
         }
     
     def get_profit_potential(self) -> float:
-        """Calculate potential profit percentage"""
-        return (self.target_price - self.entry_price) / self.entry_price
+        """Calculate potential profit percentage for LONG and SHORT"""
+        if self.signal_type == 'BUY':
+            return (self.target_price - self.entry_price) / self.entry_price
+        else:  # SELL (SHORT)
+            return (self.entry_price - self.target_price) / self.entry_price
     
     def get_risk_ratio(self) -> float:
-        """Calculate risk-to-reward ratio"""
-        risk = abs(self.entry_price - self.stop_loss) / self.entry_price
-        reward = self.get_profit_potential()
+        """Calculate risk-to-reward ratio for LONG and SHORT"""
+        if self.signal_type == 'BUY':
+            risk = abs(self.entry_price - self.stop_loss) / self.entry_price
+            reward = self.get_profit_potential()
+        else:  # SELL (SHORT)
+            risk = abs(self.stop_loss - self.entry_price) / self.entry_price
+            reward = self.get_profit_potential()
+        
         return reward / risk if risk > 0 else 0
+    
+    def get_signal_direction_emoji(self) -> str:
+        """Get emoji for signal direction"""
+        return "📈" if self.signal_type == 'BUY' else "📉"
+    
+    def get_detailed_info(self) -> str:
+        """Get detailed signal information"""
+        direction = "LONG" if self.signal_type == 'BUY' else "SHORT"
+        emoji = self.get_signal_direction_emoji()
+        
+        return f"""
+{emoji} {direction} Signal: {self.symbol}
+Entry: ${self.entry_price:.6f}
+Target: ${self.target_price:.6f} ({self.get_profit_potential()*100:+.2f}%)
+Stop: ${self.stop_loss:.6f}
+R/R: {self.get_risk_ratio():.2f}
+Confidence: {self.confidence:.1%}
+"""
 
 class SignalDetector:
     """
@@ -125,7 +151,7 @@ class SignalDetector:
     
     def analyze_symbol(self, symbol: str, timeframe: str = "1h") -> Optional[TradingSignal]:
         """
-        Analyze a single symbol and generate signal if conditions are met
+        Analyze a single symbol and generate signal if conditions are met (LONG or SHORT)
         """
         try:
             logger.info(f"Analyzing {symbol} on {timeframe} timeframe...")
@@ -154,11 +180,13 @@ class SignalDetector:
             threshold = config.CONFIDENCE_THRESHOLD
             if self.live_learning:
                 threshold = self.live_learning.get_adaptive_threshold()
-                logger.info(f"{symbol}: Prediction={prediction}, Confidence={confidence:.3f}, Adaptive Threshold={threshold:.3f}")
-            else:
-                logger.info(f"{symbol}: Prediction={prediction}, Confidence={confidence:.3f}")
             
-            # Step 6: Check if signal meets criteria
+            # Step 6: Determine signal type based on market conditions
+            signal_type = self._determine_signal_type(latest_features.iloc[-1])
+            
+            logger.info(f"{symbol}: Prediction={prediction}, Confidence={confidence:.3f}, Type={signal_type}, Threshold={threshold:.3f}")
+            
+            # Step 7: Check if signal meets criteria
             if prediction == 1 and confidence >= threshold:
                 
                 # Get current market data
@@ -170,7 +198,8 @@ class SignalDetector:
                     current_price=current_price,
                     confidence=confidence,
                     features=latest_features,
-                    timeframe=timeframe
+                    timeframe=timeframe,
+                    signal_type=signal_type
                 )
                 
                 # Additional filters
@@ -180,7 +209,7 @@ class SignalDetector:
                         signal_id = self.live_learning.register_signal(signal, latest_features)
                         logger.info(f"🧠 Signal registered for live learning: {signal_id}")
                     
-                    logger.info(f"✅ Valid signal generated for {symbol}")
+                    logger.info(f"✅ Valid {signal_type} signal generated for {symbol}")
                     return signal
                 else:
                     logger.info(f"❌ Signal filtered out for {symbol}")
@@ -191,11 +220,61 @@ class SignalDetector:
         except Exception as e:
             logger.error(f"Error analyzing {symbol}: {str(e)}")
             return None
+        
+    def _determine_signal_type(self, latest_row: pd.Series) -> str:
+        """
+        تشخیص نوع سیگنال بر اساس شرایط بازار
+        """
+        try:
+            # Get technical indicators
+            rsi = latest_row.get('rsi', 50)
+            price_vs_ema9 = latest_row.get('price_vs_ema9', 0)
+            price_vs_ema21 = latest_row.get('price_vs_ema21', 0)
+            bb_position = latest_row.get('bb_position', 0.5)
+            macd_histogram = latest_row.get('macd_histogram', 0)
+            
+            # Count bullish and bearish signals
+            bullish_signals = 0
+            bearish_signals = 0
+            
+            # RSI analysis
+            if rsi < 40:  # Oversold - bullish
+                bullish_signals += 1
+            elif rsi > 70:  # Overbought - bearish
+                bearish_signals += 1
+            
+            # Moving average trends
+            if price_vs_ema9 > 0 and price_vs_ema21 > 0:  # Price above MAs - bullish
+                bullish_signals += 1
+            elif price_vs_ema9 < 0 and price_vs_ema21 < 0:  # Price below MAs - bearish
+                bearish_signals += 1
+            
+            # Bollinger Bands position
+            if bb_position < 0.2:  # Near lower band - bullish
+                bullish_signals += 1
+            elif bb_position > 0.8:  # Near upper band - bearish
+                bearish_signals += 1
+            
+            # MACD momentum
+            if macd_histogram > 0:  # Positive momentum - bullish
+                bullish_signals += 1
+            elif macd_histogram < 0:  # Negative momentum - bearish
+                bearish_signals += 1
+            
+            # Determine signal type
+            if bearish_signals > bullish_signals and bearish_signals >= 2:
+                return 'SELL'  # SHORT signal
+            else:
+                return 'BUY'   # LONG signal (default)
+            
+        except Exception as e:
+            logger.error(f"Error determining signal type: {str(e)}")
+            return 'BUY'  # Default to LONG    
     
     def _create_signal(self, symbol: str, current_price: float, confidence: float, 
-                      features: pd.DataFrame, timeframe: str) -> TradingSignal:
+                  features: pd.DataFrame, timeframe: str, signal_type: str = 'BUY') -> TradingSignal:
         """
-        Create a trading signal with dynamically calculated parameters
+        Create a trading signal with dynamically calculated parameters (LONG or SHORT)
         """
         # Get latest market data for better calculations
         latest_row = features.iloc[-1]
@@ -208,21 +287,41 @@ class SignalDetector:
         resistance_level = self._calculate_resistance_level(features, current_price)
         
         # Dynamic entry strategy based on confidence and technical indicators
-        entry_price = self._calculate_entry_price(current_price, latest_row, confidence)
+        entry_price = self._calculate_entry_price(current_price, latest_row, confidence, signal_type)
         
-        # Dynamic stop loss based on ATR and support levels
-        stop_loss = self._calculate_stop_loss(entry_price, atr, support_level, latest_row, confidence)
+        # Dynamic stop loss and take profit based on signal type
+        if signal_type == 'BUY':
+            stop_loss = self._calculate_stop_loss_long(entry_price, atr, support_level, latest_row, confidence)
+            target_price = self._calculate_take_profit_long(entry_price, stop_loss, resistance_level, latest_row, confidence)
+        else:  # SELL (SHORT)
+            stop_loss = self._calculate_stop_loss_short(entry_price, atr, resistance_level, latest_row, confidence)
+            target_price = self._calculate_take_profit_short(entry_price, stop_loss, support_level, latest_row, confidence)
         
-        # Dynamic take profit based on resistance and risk-reward
-        target_price = self._calculate_take_profit(entry_price, stop_loss, resistance_level, latest_row, confidence)
+        # 📊 Log detailed price information with 6 decimal precision
+        logger.info(f"💰 {signal_type} Signal Price Details for {symbol}:")
+        logger.info(f"   Current Price: ${current_price:.6f}")
+        logger.info(f"   Entry Price: ${entry_price:.6f}")
+        logger.info(f"   Target Price: ${target_price:.6f}")
+        logger.info(f"   Stop Loss: ${stop_loss:.6f}")
+        
+        if signal_type == 'BUY':
+            risk_pct = ((entry_price - stop_loss) / entry_price * 100)
+            reward_pct = ((target_price - entry_price) / entry_price * 100)
+        else:  # SELL
+            risk_pct = ((stop_loss - entry_price) / entry_price * 100)
+            reward_pct = ((entry_price - target_price) / entry_price * 100)
+        
+        logger.info(f"   Risk: {risk_pct:.3f}%")
+        logger.info(f"   Reward: {reward_pct:.3f}%")
+        logger.info(f"   R/R Ratio: {(reward_pct / risk_pct):.2f}")
         
         # Create signal
         signal = TradingSignal(
             symbol=symbol,
-            signal_type='BUY',  # Currently only BUY signals
-            entry_price=entry_price,
-            target_price=target_price,
-            stop_loss=stop_loss,
+            signal_type=signal_type,
+            entry_price=round(entry_price, 6),  # 6 decimal places precision
+            target_price=round(target_price, 6),
+            stop_loss=round(stop_loss, 6),
             confidence=confidence,
             created_at=datetime.now(),
             expires_at=datetime.now() + timedelta(hours=config.SIGNAL_EXPIRY_HOURS),
@@ -239,6 +338,155 @@ class SignalDetector:
         
         return signal
     
+    def _calculate_stop_loss_long(self, entry_price: float, atr: float, support_level: float, 
+                             latest_row: pd.Series, confidence: float) -> float:
+        """🚀 محاسبه stop loss بهینه‌شده برای LONG با کنترل ایمنی"""
+        try:
+            # ATR-based stop loss بهینه‌شده
+            atr_multiplier = 1.2 if confidence > 0.7 else 1.5
+            atr_stop = entry_price - (atr * atr_multiplier)
+            
+            # Support-based stop loss
+            support_buffer = entry_price * 0.003
+            support_stop = support_level - support_buffer
+            
+            # استفاده از بالاتر (کمتر aggressive)
+            calculated_stop = max(atr_stop, support_stop)
+            
+            # حداکثر ضرر بهینه‌شده
+            max_loss_pct = config.MAX_STOP_LOSS
+            max_stop = entry_price * (1 - max_loss_pct)
+            
+            # استفاده از بالاتر (کمتر ریسک)
+            preliminary_stop = max(calculated_stop, max_stop)
+            
+            # 🛡️ SAFETY CHECK: Stop loss نباید بالاتر از entry price باشه
+            if preliminary_stop >= entry_price:
+                logger.warning(f"⚠️ LONG Stop loss {preliminary_stop:.6f} >= entry price {entry_price:.6f}, using safe fallback")
+                safe_stop = entry_price * (1 - max(config.MAX_STOP_LOSS, 0.01))
+                return safe_stop
+            
+            return preliminary_stop
+            
+        except Exception as e:
+            logger.error(f"Error calculating LONG stop loss: {str(e)}")
+            safe_stop = entry_price * (1 - config.MAX_STOP_LOSS)
+            return safe_stop
+
+    def _calculate_stop_loss_short(self, entry_price: float, atr: float, resistance_level: float, 
+                                latest_row: pd.Series, confidence: float) -> float:
+        """🚀 محاسبه stop loss بهینه‌شده برای SHORT با کنترل ایمنی"""
+        try:
+            # ATR-based stop loss بهینه‌شده
+            atr_multiplier = 1.2 if confidence > 0.7 else 1.5
+            atr_stop = entry_price + (atr * atr_multiplier)
+            
+            # Resistance-based stop loss
+            resistance_buffer = entry_price * 0.003
+            resistance_stop = resistance_level + resistance_buffer
+            
+            # استفاده از کمتر (کمتر aggressive)
+            calculated_stop = min(atr_stop, resistance_stop)
+            
+            # حداکثر ضرر بهینه‌شده
+            max_loss_pct = config.MAX_STOP_LOSS
+            max_stop = entry_price * (1 + max_loss_pct)
+            
+            # استفاده از کمتر (کمتر ریسک)
+            preliminary_stop = min(calculated_stop, max_stop)
+            
+            # 🛡️ SAFETY CHECK: Stop loss نباید پایین‌تر از entry price باشه
+            if preliminary_stop <= entry_price:
+                logger.warning(f"⚠️ SHORT Stop loss {preliminary_stop:.6f} <= entry price {entry_price:.6f}, using safe fallback")
+                safe_stop = entry_price * (1 + max(config.MAX_STOP_LOSS, 0.01))
+                return safe_stop
+            
+            return preliminary_stop
+            
+        except Exception as e:
+            logger.error(f"Error calculating SHORT stop loss: {str(e)}")
+            safe_stop = entry_price * (1 + config.MAX_STOP_LOSS)
+            return safe_stop
+
+    def _calculate_take_profit_long(self, entry_price: float, stop_loss: float, resistance_level: float,
+                                latest_row: pd.Series, confidence: float) -> float:
+        """🚀 محاسبه take profit بهینه‌شده برای LONG"""
+        try:
+            # محاسبه ریسک
+            risk = entry_price - stop_loss
+            
+            # نسبت ریسک-سود بهینه‌شده
+            if confidence > 0.8:
+                risk_reward_ratio = 4.0
+            elif confidence > 0.7:
+                risk_reward_ratio = 3.5
+            elif confidence > 0.6:
+                risk_reward_ratio = 3.0
+            else:
+                risk_reward_ratio = 2.5
+            
+            # محاسبه target بر اساس ریسک-سود
+            risk_reward_target = entry_price + (risk * risk_reward_ratio)
+            
+            # محاسبه target بر اساس resistance
+            resistance_buffer = entry_price * 0.003
+            resistance_target = resistance_level - resistance_buffer
+            
+            # استفاده از کمتر (محافظه‌کارانه‌تر)
+            calculated_target = min(risk_reward_target, resistance_target)
+            
+            # حداقل سود بهینه‌شده
+            min_profit_pct = config.MIN_PROFIT_TARGET
+            min_target = entry_price * (1 + min_profit_pct)
+            
+            # استفاده از بالاتر (حداقل سود)
+            final_target = max(calculated_target, min_target)
+            
+            return final_target
+            
+        except Exception as e:
+            logger.error(f"Error calculating LONG take profit: {str(e)}")
+            return entry_price * (1 + config.MIN_PROFIT_TARGET)
+
+    def _calculate_take_profit_short(self, entry_price: float, stop_loss: float, support_level: float,
+                                    latest_row: pd.Series, confidence: float) -> float:
+        """🚀 محاسبه take profit بهینه‌شده برای SHORT"""
+        try:
+            # محاسبه ریسک
+            risk = stop_loss - entry_price
+            
+            # نسبت ریسک-سود بهینه‌شده
+            if confidence > 0.8:
+                risk_reward_ratio = 4.0
+            elif confidence > 0.7:
+                risk_reward_ratio = 3.5
+            elif confidence > 0.6:
+                risk_reward_ratio = 3.0
+            else:
+                risk_reward_ratio = 2.5
+            
+            # محاسبه target بر اساس ریسک-سود
+            risk_reward_target = entry_price - (risk * risk_reward_ratio)
+            
+            # محاسبه target بر اساس support
+            support_buffer = entry_price * 0.003
+            support_target = support_level + support_buffer
+            
+            # استفاده از بالاتر (محافظه‌کارانه‌تر)
+            calculated_target = max(risk_reward_target, support_target)
+            
+            # حداقل سود بهینه‌شده
+            min_profit_pct = config.MIN_PROFIT_TARGET
+            min_target = entry_price * (1 - min_profit_pct)
+            
+            # استفاده از کمتر (حداقل سود)
+            final_target = min(calculated_target, min_target)
+            
+            return final_target
+            
+        except Exception as e:
+            logger.error(f"Error calculating SHORT take profit: {str(e)}")
+            return entry_price * (1 - config.MIN_PROFIT_TARGET)
     def _calculate_support_level(self, features: pd.DataFrame, current_price: float) -> float:
         """Calculate dynamic support level"""
         try:
@@ -277,26 +525,38 @@ class SignalDetector:
             logger.error(f"Error calculating resistance level: {str(e)}")
             return current_price * 1.03  # Default 3% above current price
     
-    def _calculate_entry_price(self, current_price: float, latest_row: pd.Series, confidence: float) -> float:
-        """🚀 محاسبه قیمت ورود بهینه‌شده"""
+    def _calculate_entry_price(self, current_price: float, latest_row: pd.Series, 
+                          confidence: float, signal_type: str) -> float:
+        """🚀 محاسبه قیمت ورود بهینه‌شده برای LONG و SHORT"""
         try:
-            # منطق بهینه‌شده از بک‌تست
-            if confidence > 0.7:
-                return current_price  # ورود فوری برای confidence بالا
-            elif confidence > 0.6:
-                pullback_pct = 0.003  # 0.3% pullback کوچک
-                return current_price * (1 - pullback_pct)
-            else:
-                pullback_pct = 0.007  # 0.7% pullback متوسط
-                return current_price * (1 - pullback_pct)
+            if signal_type == 'BUY':
+                # LONG: Wait for small pullback
+                if confidence > 0.7:
+                    return current_price  # ورود فوری برای confidence بالا
+                elif confidence > 0.6:
+                    pullback_pct = 0.003  # 0.3% pullback کوچک
+                    return current_price * (1 - pullback_pct)
+                else:
+                    pullback_pct = 0.007  # 0.7% pullback متوسط
+                    return current_price * (1 - pullback_pct)
+            else:  # SELL (SHORT)
+                # SHORT: Wait for small bounce
+                if confidence > 0.7:
+                    return current_price  # ورود فوری برای confidence بالا
+                elif confidence > 0.6:
+                    bounce_pct = 0.003  # 0.3% bounce کوچک
+                    return current_price * (1 + bounce_pct)
+                else:
+                    bounce_pct = 0.007  # 0.7% bounce متوسط
+                    return current_price * (1 + bounce_pct)
             
         except Exception as e:
             logger.error(f"Error calculating optimized entry price: {str(e)}")
             return current_price
     
     def _calculate_stop_loss(self, entry_price: float, atr: float, support_level: float, 
-                           latest_row: pd.Series, confidence: float) -> float:
-        """🚀 محاسبه stop loss بهینه‌شده"""
+                       latest_row: pd.Series, confidence: float) -> float:
+        """🚀 محاسبه stop loss بهینه‌شده با کنترل ایمنی"""
         try:
             # ATR-based stop loss بهینه‌شده
             atr_multiplier = 1.2 if confidence > 0.7 else 1.5  # تنگ‌تر
@@ -314,13 +574,22 @@ class SignalDetector:
             max_stop = entry_price * (1 - max_loss_pct)
             
             # استفاده از بالاتر (کمتر ریسک)
-            final_stop = max(calculated_stop, max_stop)
+            preliminary_stop = max(calculated_stop, max_stop)
             
-            return final_stop
+            # 🛡️ SAFETY CHECK: Stop loss نباید بالاتر از entry price باشه
+            if preliminary_stop >= entry_price:
+                logger.warning(f"⚠️ Stop loss {preliminary_stop:.6f} >= entry price {entry_price:.6f}, using safe fallback")
+                # Use a safe percentage below entry price
+                safe_stop = entry_price * (1 - max(config.MAX_STOP_LOSS, 0.01))  # حداقل 1% زیر قیمت ورود
+                return safe_stop
+            
+            return preliminary_stop
             
         except Exception as e:
             logger.error(f"Error calculating optimized stop loss: {str(e)}")
-            return entry_price * (1 - config.MAX_STOP_LOSS)
+            # Safe fallback
+            safe_stop = entry_price * (1 - config.MAX_STOP_LOSS)
+            return safe_stop
     
     def _calculate_take_profit(self, entry_price: float, stop_loss: float, resistance_level: float,
                               latest_row: pd.Series, confidence: float) -> float:
@@ -363,18 +632,34 @@ class SignalDetector:
             return entry_price * (1 + config.MIN_PROFIT_TARGET)
     
     def _validate_signal(self, signal: TradingSignal) -> bool:
-        """🚀 اعتبارسنجی سیگنال بهینه‌شده"""
+        """🚀 اعتبارسنجی سیگنال بهینه‌شده برای LONG و SHORT"""
         try:
+            # Calculate risk-reward ratio based on signal type
+            if signal.signal_type == 'BUY':
+                rسisk = signal.entry_price - signal.stop_loss
+                reward = signal.target_price - signal.entry_price
+            else:  # SELL (SHORT)
+                risk = signal.stop_loss - signal.entry_price
+                reward = signal.entry_price - signal.target_price
+            
+            risk_reward = reward / risk if risk > 0 else 0
+            
             # 🚀 فیلتر 1: نسبت ریسک-سود کمتر
-            risk_reward = signal.get_risk_ratio()
             if risk_reward < config.SIGNAL_VALIDATION["min_risk_reward"]:  # 1.2
                 logger.info(f"Signal filtered: Poor risk-reward ratio ({risk_reward:.2f})")
                 return False
             
-            # 🚀 فیلتر 2: RSI اجازه بالاتر
-            if signal.rsi > config.SIGNAL_VALIDATION["max_rsi_overbought"]:  # 90
-                logger.info(f"Signal filtered: RSI too high ({signal.rsi:.1f})")
-                return False
+            # 🚀 فیلتر 2: RSI checks based on signal type
+            if signal.signal_type == 'BUY':
+                # For LONG: Don't buy when extremely overbought
+                if signal.rsi > config.SIGNAL_VALIDATION["max_rsi_overbought"]:  # 90
+                    logger.info(f"Signal filtered: RSI too high for LONG ({signal.rsi:.1f})")
+                    return False
+            else:  # SELL (SHORT)
+                # For SHORT: Don't sell when extremely oversold
+                if signal.rsi < (100 - config.SIGNAL_VALIDATION["max_rsi_overbought"]):  # 10
+                    logger.info(f"Signal filtered: RSI too low for SHORT ({signal.rsi:.1f})")
+                    return False
             
             # 🚀 فیلتر 3: Volume کمتر سخت‌گیری
             if signal.volume_ratio < config.SIGNAL_VALIDATION["min_volume_ratio"]:  # 0.6
@@ -386,6 +671,23 @@ class SignalDetector:
                 logger.info(f"Signal filtered: Duplicate signal for {signal.symbol}")
                 return False
             
+            # 🚀 فیلتر 5: Safety check for price relationships
+            if signal.signal_type == 'BUY':
+                if signal.stop_loss >= signal.entry_price:
+                    logger.error(f"❌ LONG Signal validation failed: Stop loss {signal.stop_loss:.6f} >= Entry {signal.entry_price:.6f}")
+                    return False
+                if signal.target_price <= signal.entry_price:
+                    logger.error(f"❌ LONG Signal validation failed: Target {signal.target_price:.6f} <= Entry {signal.entry_price:.6f}")
+                    return False
+            else:  # SELL (SHORT)
+                if signal.stop_loss <= signal.entry_price:
+                    logger.error(f"❌ SHORT Signal validation failed: Stop loss {signal.stop_loss:.6f} <= Entry {signal.entry_price:.6f}")
+                    return False
+                if signal.target_price >= signal.entry_price:
+                    logger.error(f"❌ SHORT Signal validation failed: Target {signal.target_price:.6f} >= Entry {signal.entry_price:.6f}")
+                    return False
+            
+            logger.info(f"✅ Signal validation passed: {signal.signal_type} {signal.symbol} R/R: {risk_reward:.2f}")
             return True
             
         except Exception as e:

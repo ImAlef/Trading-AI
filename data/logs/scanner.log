@@ -212,3 +212,34 @@
 2025-07-12 12:33:47,785 - INFO - 🛑 Live learning monitoring stopped
 2025-07-12 12:34:01,584 - INFO - Email sent successfully to arianakbari043@gmail.com
 2025-07-12 12:34:01,585 - INFO - ALERT: Crypto Signal Bot stopped by user.
+2025-08-02 18:20:59,033 - INFO - 🚀 Initializing Automated Scanner with Auto-Training...
+2025-08-02 18:20:59,066 - INFO - Model loaded successfully: v20250710_135838
+2025-08-02 18:20:59,066 - INFO - Features: 66
+2025-08-02 18:20:59,066 - INFO - ✅ Existing model found and loaded
+2025-08-02 18:20:59,072 - INFO - Model loaded successfully: v20250710_135838
+2025-08-02 18:20:59,072 - INFO - Features: 66
+2025-08-02 18:20:59,072 - INFO - Model loaded successfully: v20250710_135838
+2025-08-02 18:20:59,073 - INFO - 🚀 OPTIMIZED Live Learning System initialized
+2025-08-02 18:20:59,073 - INFO -    Initial threshold: 0.450
+2025-08-02 18:20:59,073 - INFO -    Learning sensitivity: 0.03
+2025-08-02 18:20:59,074 - INFO - 🧠 Live learning system initialized!
+2025-08-02 18:20:59,074 - INFO - ✅ ML model ready: v20250710_135838
+2025-08-02 18:20:59,074 - INFO - 🧠 Live Learning System: ACTIVE
+2025-08-02 18:20:59,074 - INFO - 
+🧠 LIVE LEARNING STATUS: Initializing
+📊 Current Threshold: 0.450
+⚡ Active Signals: 0
+🏁 Completed Signals: 0
+
+2025-08-02 18:20:59,074 - INFO - ✅ Email notifications enabled
+2025-08-02 18:20:59,074 - INFO - 🎯 Scanner initialized successfully
+2025-08-02 18:20:59,074 - INFO - 🔄 Starting continuous scanning mode...
+2025-08-02 18:20:59,074 - INFO - 📅 Scan interval: 10.0 minutes
+2025-08-02 18:20:59,075 - INFO - 📅 Scheduling weekly model retraining...
+2025-08-02 18:21:01,399 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-08-02 18:21:01,400 - INFO - ALERT: Crypto Signal Bot with Auto-Training started successfully (Adaptive threshold: 0.450)
+2025-08-02 18:21:20,206 - INFO - 👋 Scanning stopped by user
+2025-08-02 18:21:25,217 - INFO - 🛑 Live learning monitoring stopped
+2025-08-02 18:21:25,217 - INFO - 🛑 Live learning monitoring stopped
+2025-08-02 18:21:27,640 - INFO - Email sent successfully to arianakbari043@gmail.com
+2025-08-02 18:21:27,641 - INFO - ALERT: Crypto Signal Bot stopped by user.
