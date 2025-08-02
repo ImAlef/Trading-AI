@@ -688,8 +688,8 @@ class SignalDetector:
                     return False
             
             # 🚀 فیلتر 6: Minimum profit check
-            min_profit_pct = config.MIN_PROFIT_TARGET  # 1.5%
-            if reward < min_profit_pct:
+            min_profit_pct = config.MIN_PROFIT_TARGET * 0.95  # 95% از حداقل مطلوب
+            if reward <= min_profit_pct:
                 logger.info(f"Signal filtered: Profit too low ({reward*100:.2f}% < {min_profit_pct*100:.1f}%)")
                 return False
             
