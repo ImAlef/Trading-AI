@@ -636,11 +636,11 @@ class SignalDetector:
         try:
             # Calculate risk-reward ratio based on signal type
             if signal.signal_type == 'BUY':
-                rسisk = signal.entry_price - signal.stop_loss
-                reward = signal.target_price - signal.entry_price
+                risk = abs(signal.entry_price - signal.stop_loss) / signal.entry_price
+                reward = abs(signal.target_price - signal.entry_price) / signal.entry_price
             else:  # SELL (SHORT)
-                risk = signal.stop_loss - signal.entry_price
-                reward = signal.entry_price - signal.target_price
+                risk = abs(signal.stop_loss - signal.entry_price) / signal.entry_price
+                reward = abs(signal.entry_price - signal.target_price) / signal.entry_price
             
             risk_reward = reward / risk if risk > 0 else 0
             
@@ -687,11 +687,27 @@ class SignalDetector:
                     logger.error(f"❌ SHORT Signal validation failed: Target {signal.target_price:.6f} >= Entry {signal.entry_price:.6f}")
                     return False
             
-            logger.info(f"✅ Signal validation passed: {signal.signal_type} {signal.symbol} R/R: {risk_reward:.2f}")
+            # 🚀 فیلتر 6: Minimum profit check
+            min_profit_pct = config.MIN_PROFIT_TARGET  # 1.5%
+            if reward < min_profit_pct:
+                logger.info(f"Signal filtered: Profit too low ({reward*100:.2f}% < {min_profit_pct*100:.1f}%)")
+                return False
+            
+            # 🚀 فیلتر 7: Maximum risk check  
+            max_risk_pct = config.MAX_STOP_LOSS  # 1.2%
+            if risk > max_risk_pct:
+                logger.info(f"Signal filtered: Risk too high ({risk*100:.2f}% > {max_risk_pct*100:.1f}%)")
+                return False
+            
+            logger.info(f"✅ Signal validation passed: {signal.signal_type} {signal.symbol}")
+            logger.info(f"   Risk: {risk*100:.2f}%, Reward: {reward*100:.2f}%, R/R: {risk_reward:.2f}")
+            logger.info(f"   RSI: {signal.rsi:.1f}, Volume: {signal.volume_ratio:.2f}")
+            
             return True
             
         except Exception as e:
             logger.error(f"Error validating signal: {str(e)}")
+            logger.error(f"Signal details: {signal.symbol} {signal.signal_type} Entry:{signal.entry_price:.6f} Target:{signal.target_price:.6f} Stop:{signal.stop_loss:.6f}")
             return False
     
     def _is_duplicate_signal(self, new_signal: TradingSignal) -> bool:
